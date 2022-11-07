@@ -1,0 +1,38 @@
+.weui-toptips {
+  display: none;
+  position: fixed;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+  z-index: 5000;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.weui-toptips_show.weui-toptips {
+  display: block;
+}
+
+.weui-toptips_show {
+  -webkit-transform: translateZ(0) translateY(0);
+  transform: translateZ(0) translateY(0);
+  opacity: 1
+}
+
+.weui-toptips_success {
+  background-color: #07C160;
+}
+
+.weui-toptips_error {
+  background-color: #e75e58;
+}
+
+.weui-toptips_info {
+  background-color: #10AEFF;
+}

@@ -1,0 +1,48 @@
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
+<view class="padding flex align-center">
+  <view class="flex-sub">
+    <view class="flex">
+      <view class="flex-sub">{{serve.name}}</view>
+      <view class="flex-sub">{{serve.age}}</view>
+      <view class="flex-twice">{{serve.phone}}</view>
+    </view>
+    <view class="margin-top">地址:{{serve.address}}</view>
+  </view>
+  <image src="{{pic}}" wx:if="{{pic}}" style="width: 100rpx;height: 100rpx;"></image>
+  <view class="text-gray cuIcon-camera margin-left" style="font-size: 60rpx;" bindtap="addPic" wx:if="{{(!serve.conclusion && serve.endTime)}}">
+  </view>
+</view>
+
+<view class="padding flex align-center justify-between">
+  <image src="/images/hourglass.png" style="height: 120rpx;width: 120rpx;"></image>
+  <view class="text-bold text-xxl">{{serveTime}}</view>
+  <view class="cu-btn bg-main radius" wx:if="{{!serve.startTime}}" bindtap="start">开始服务</view>
+  <view class="cu-btn bg-main radius" wx:if="{{serve.startTime && !serve.endTime}}" bindtap="end">结束服务</view>
+  <view class="cu-btn bg-grey radius" wx:if="{{serve.startTime && serve.endTime}}">服务已结束</view>
+</view>
+<view class="margin-top">
+  <view class="bg-gray padding-tb-xl padding-lr" bindtap="{{(!serve.conclusion && serve.endTime)?'modalStatus':''}}" data-name="Server">{{serve.conclusion?serve.conclusion:'输入服务中的问题'}}</view>
+</view>
+<view class="padding">
+  注意事项:{{serve.remark}}
+</view>
+
+<view class="cu-modal {{modalServer?'show':''}}">
+  <view class="cu-dialog sm">
+    <view class="cu-bar bg-white justify-end">
+      <view class="action" bindtap="modalStatus" data-name="Server">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="grid col-2 padding-sm">
+      <view wx:for="{{feedbacks}}" class="padding-xs" wx:key="index">
+        <view class="cu-btn block padding-sm {{item.choose?'bg-orange':'line-grey'}}" bindtap="chooseFeed" data-index="{{index}}"> {{item.title}}</view>
+      </view>
+    </view>
+    <view class="cu-bar bg-white justify-center">
+      <view class="action">
+        <button class="cu-btn bg-main margin-left" bindtap="serveEnd">完成服务</button>
+      </view>
+    </view>
+  </view>
+</view>

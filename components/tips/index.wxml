@@ -1,0 +1,6 @@
+<view class="weui-toptips {{className}} {{extClass}} {{errorShow ? 'weui-toptips_show' :  ''}}">
+    <block wx:if="{{errorMsg}}">{{errorMsg}}</block>
+    <block wx:else>
+        <slot></slot>
+    </block>
+</view>
