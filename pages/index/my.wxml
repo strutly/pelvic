@@ -1,0 +1,4 @@
+<!--pages/index/my.wxml-->
+<text>pages/index/my.wxml</text>
+
+<tabBar selected="1"></tabBar>

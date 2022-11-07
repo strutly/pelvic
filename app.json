@@ -1,7 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/serve/task"
+    "pages/serve/task",
+    "pages/index/my",
+    "pages/serve/list"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -11,6 +13,17 @@
   },
   "usingComponents": {
     "topTips": "/components/tips/index"
+  },
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/index/index"
+      },
+      {
+        "pagePath": "pages/index/my"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json"
 }

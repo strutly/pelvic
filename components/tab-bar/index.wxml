@@ -1,0 +1,15 @@
+<view class="flex text-center bg-white shadow tabbar">  
+  <view class="flex-sub" bindtap="switch" data-url="/pages/index/index">
+    <view class='cuIcon-cu-image padding-top-sm'>
+      <image  src="{{selected==0?'/images/tab0-1.jpg':'/images/tab0-0.png'}}"></image>
+    </view>
+    <view class="footer-des {{selected==0?'text-black':'text-gray'}}">工作台</view>
+  </view>
+
+  <view class="flex-sub" bindtap="switch"  data-url="/pages/index/my">
+    <view class='cuIcon-cu-image padding-top-sm'>
+      <image  src="{{selected==1?'/images/tab1-1.png':'/images/tab1-0.jpg'}}"></image>
+    </view>
+    <view class="footer-des {{selected!=0?'text-black':'text-gray'}}">个人中心</view>
+  </view>
+</view>

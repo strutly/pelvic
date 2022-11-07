@@ -2,3 +2,49 @@
 .banner{
   width: 100%;
 }
+
+.text-grey{
+  color:#7f7f7f;
+  font-size: 36rpx;
+}
+.menu{
+  width: 320rpx;
+  height: 142rpx;
+  position: relative;
+  border-radius: 20rpx;
+}
+.menu .badge{
+  font-size: 24rpx;
+  background-color: #FB5B6E;
+}
+
+.menu image{
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.card{
+  height: 500rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card image{
+  width: 128rpx;
+  height: 128rpx;
+  margin-right:40rpx;
+}
+
+.card-title{
+  font-size: 40rpx;
+  color: var(--black);
+}
+.card-des{
+  font-size: 28rpx;
+  color:#D7D7D7;
+}
+.card-btn{
+  background-image:linear-gradient(180deg, #5899DD, #72afe5);
+  color:var(--white);
+  font-size: 38rpx;
+}

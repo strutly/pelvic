@@ -22,16 +22,19 @@ CustomPage({
       console.log(error)
     }
   },
-  onReady() {
+  onShow(){
+    console.log("show");
+    
     getApp().watch(function (value) {
       console.log(value);
       /*
         登录成功,并且授权成功 ,获取首页数据
       */
       if (value.login && value.auth) {
-        that.showTips('登录成功', 'success');
+        if(!that.data.show)that.showTips('登录成功', 'success');
         that.setData({
-          modalauth: false
+          modalauth: false,
+          show:true,
         })
         that.getHomeData();
       }
@@ -56,6 +59,7 @@ CustomPage({
       })
     })
   },
+  
 
   async getPhoneNumber(e) {
     console.log(e);

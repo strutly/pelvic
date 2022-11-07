@@ -2,49 +2,59 @@
 <view class="padding">
   <image class="banner" src="/images/banner.png" mode="widthFix"></image>
   <view class="text-grey margin-tb">今日工作计划</view>
-
   <view class="flex justify-between">
-    <view class="flex-sub flex align-center bg-white margin-right-sm padding radius-xl" style="position: relative;">
-      <image class="bg-blue round margin-right" src="/images/hourglass.png" style="width: 60rpx; height: 60rpx;"></image>
+    <view class="flex-sub flex align-center bg-white margin-right-sm padding radius-xl menu" bindtap="toUrl" data-url="/pages/serve/list">
+      <image class="round margin-right" src="/images/pelvic.jpg"></image>
       <text>盆底肌修复</text>
-      <view class="cu-tag badge">10</view>
+      <view class="cu-tag badge" wx:if="{{datas.length>0}}">{{datas.length}}</view>
     </view>
-    <view class="flex-sub flex align-center bg-white margin-left-sm padding radius-xl">
-      <image class="bg-blue round margin-right" src="/images/hourglass.png" style="width: 60rpx; height: 60rpx;"></image>
+    <view class="flex-sub flex align-center bg-white margin-left-sm padding radius-xl menu">
+      <image class="round margin-right" src="/images/apoplexy.jpg"></image>
       <text>脑卒中修复</text>
     </view>
   </view>
-  <view class="bg-white radius-xl margin-top padding">
-    <view class="cu-tag radius bg-blue light">评估</view>
-    <view class="flex justify-center padding-lr-xl align-center">
-      <image class="round margin-right" src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" style="width: 100rpx; height: 100rpx;"></image>
+
+  <view class="cards footer-btns">
+    <view class="bg-white radius-xl margin-top padding card">
       <view>
-        <view>脚型测量</view>
-        <view class="text-gray text-sm margin-top-sm">
-          工程中心现场测量
+        <view class="cu-tag radius bg-blue light">评估</view>
+      </view>
+      <view class="flex justify-center padding-lr-xl align-center margin-top">
+        <image class="margin-right" src="/images/foot.jpg"></image>
+        <view class="flex-sub">
+          <view class="card-title">脚型测量</view>
+          <view class="text-gray text-sm margin-top-sm card-des">
+            工程中心现场测量
+          </view>
         </view>
       </view>
-    </view>
-    <view class="padding-lr-xl flex flex-direction margin-top-xl margin-bottom">
-			<view class="text-center round bg-gradual-blue padding-tb">开始测量</view>
-		</view>
-  </view>
-  <view class="bg-white radius-xl margin-top padding">
-    <view class="cu-tag radius bg-orange light">评估</view>
-    <view class="flex justify-center padding-lr-xl align-center">
-      <image class="round margin-right" src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" style="width: 100rpx; height: 100rpx;"></image>
-      <view>
-        <view>其他评估</view>
-        <view class="text-gray text-sm margin-top-sm">
-          工程中心现场评估
-        </view>
+      <view class="padding-lr-xl flex flex-direction margin-top-xl margin-bottom">
+        <view class="text-center round padding-tb card-btn">开始测量</view>
       </view>
     </view>
-    <view class="padding-lr-xl flex flex-direction margin-top-xl margin-bottom">
-			<view class="text-center round bg-gradual-blue padding-tb">开始测量</view>
-		</view>
+    <view class="bg-white radius-xl margin-top padding card">
+      <view>
+        <view class="cu-tag radius bg-orange light">评估</view>
+      </view>
+
+      <view class="flex justify-center padding-lr-xl align-center">
+        <image class="margin-right" src="/images/more.jpg"></image>
+        <view class="flex-sub">
+          <view class="card-title">其他评估</view>
+          <view class="text-gray text-sm margin-top-sm card-des">
+            工程中心现场评估
+          </view>
+        </view>
+      </view>
+      <view class="padding-lr-xl flex flex-direction margin-top-xl margin-bottom">
+        <view class="text-center round padding-tb card-btn">开始测量</view>
+      </view>
+    </view>
   </view>
 </view>
+
+
+<tabBar selected="0"></tabBar>
 
 <view class="cu-modal show" wx:if="{{modalauth}}">
   <view class="cu-dialog sm">
