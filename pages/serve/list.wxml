@@ -1,14 +1,42 @@
-<view class="cu-bar bg-white solid-bottom">
-  <view class="action">今日工作计划</view>
+<view class="cu-form-group">
+  <view class="title">日期选择</view>
+  <picker mode="date" value="{{appointmentDay}}" start="{{minDate}}" bindchange="dateChange">
+    <view class="picker">
+      {{appointmentDay}}
+    </view>
+  </picker>
 </view>
-<view class="cu-list menu">
+<view class="cu-list menu-avatar">
   <view class="cu-item arrow" wx:for="{{datas}}" wx:key="index" bindtap="toUrl" data-url="/pages/serve/task?id={{item.id}}">
+    <image class="cu-avatar round lg" src="{{item.patient.headImgUrl?item.patient.headImgUrl:'/images/headimg.png'}}"></image>
     <view class="content">
-      <text class="cuIcon-warn text-green"></text>
-      <text class="text-grey">{{item.name}}</text>
+      <view class="text-grey">{{item.patient.name}}</view>
+      <view class="text-gray text-sm flex">
+        <view class="text-cut">
+          <text class="cuIcon-locationfill text-red  margin-right-xs"></text>
+          {{item.patient.address}}
+        </view>
+      </view>
+      <view class="text-gray text-sm flex">
+        <view class="text-cut">
+          <text class="cuIcon-phone text-green  margin-right-xs"></text>
+          {{item.patient.phone}}
+        </view>
+      </view>
     </view>
     <view class="action">
-      <text class="text-grey text-sm">{{item.appointmentTime==0?'上午':'下午'}}</text>
+      <view class="text-grey text-xs">{{item.appointmentTime==0?'上午':'下午'}}</view>
+      <view> </view>
+      <view class="sm">{{item.patient.age}}</view>
     </view>
+  </view>
+</view>
+<view class="padding-xs flex align-center" wx:if="{{datas.length==0}}">
+  <view class="flex-sub text-center">
+    <view class="text-xsl padding">
+      <text class="cuIcon-info text-main"></text>
+    </view>
+    
+    <view class="padding">今日计划暂无</view>
   </view>
 </view>

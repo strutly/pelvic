@@ -9,13 +9,20 @@ const formatTime = date => {
   return `${[year, month, day].map(formatNumber).join('-')} ${[hour, minute, second].map(formatNumber).join(':')}`
 }
 
+const formatDate = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  return `${[year, month, day].map(formatNumber).join('-')}`
+}
+
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : `0${n}`
 }
 
 const serveTime = startTime => {
-  var start = new Date(startTime).getTime();
+  var start = new Date(startTime.replace(/-/g, "/")).getTime();
   var end, hour = 1000 * 60 * 60, minute = 1000 * 60, second = 1000, h, m, s;
 
   end = new Date().getTime();
@@ -27,5 +34,5 @@ const serveTime = startTime => {
 }
 
 module.exports = {
-  formatTime,serveTime
+  formatTime,serveTime,formatDate
 }

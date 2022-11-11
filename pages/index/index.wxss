@@ -22,6 +22,9 @@
   width: 80rpx;
   height: 80rpx;
 }
+.menu text{
+  font-size: 30rpx;
+}
 
 .card{
   height: 500rpx;

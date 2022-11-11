@@ -1,11 +1,11 @@
 var that, interval;
-const app = getApp()
 import Api from '../../config/api';
 import CustomPage from '../../CustomPage';
 import Util from '../../utils/util';
 CustomPage({
 
   data: {
+    serve:{},
     serveTime: "服务未开始",
     feedbacks: [{ title: '配合不佳', choose: false }, { title: '情绪不佳', choose: false }, { title: '反应良好', choose: false }, { title: '修复效果明显', choose: false }],
     modalServer: false,
@@ -64,9 +64,10 @@ CustomPage({
     console.log(res);
   },
   async end() {
+    
     let res = await Api.setmealServiceUpdate({
       id: that.data.options.id,
-      endTime: Util.formatTime(new Date())
+      
     })
     console.log(res);
     if (res.code == 0) {
@@ -89,22 +90,31 @@ CustomPage({
     })
   },
   async serveEnd(){
+    let serve = that.data.serve;
+    let pic = that.data.pic;
+    if(serve.needPic && !pic) return that.showTips("请拍摄按摩仪的评估照片病上传");
     let feedbacks = that.data.feedbacks;
     let conclusion = feedbacks.filter(item=>{
       return item.choose
     }).map(item=> item.title).join(",");
     console.log(conclusion);
+    
     let res = await Api.setmealServiceUpdate({
       id: that.data.options.id,
-      pic:that.data.pic,
-      conclusion: conclusion
+      conclusion: conclusion,
+      pic:pic,
+      endTime: Util.formatTime(new Date())
     })
     if (res.code == 0) {
       that.showTips("评论成功","success");
       that.setData({
         modalServer: false
       })
-      that.showData()
+      that.showData();
+      setTimeout(() => {
+        that.back();
+      }, 1500);
+      
     }
   },
   async addPic(e){

@@ -10,7 +10,7 @@
     </view>
     <view class="flex-sub flex align-center bg-white margin-left-sm padding radius-xl menu">
       <image class="round margin-right" src="/images/apoplexy.jpg"></image>
-      <text>脑卒中修复</text>
+      <text>脑卒中康复</text>
     </view>
   </view>
 

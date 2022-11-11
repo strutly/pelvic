@@ -4,5 +4,18 @@
   "setting": {
     "compileHotReLoad": true,
     "urlCheck": false
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "",
+          "pathName": "pages/serve/task",
+          "query": "id=16",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
   }
 }
