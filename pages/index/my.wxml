@@ -1,4 +1,35 @@
-<!--pages/index/my.wxml-->
-<text>pages/index/my.wxml</text>
+<view class="bg-gray radius padding margin">
+  <view class="flex align-center">
+    <image src="{{statics.pic?domain+'/'+statics.pic:'/images/headimg.png'}}" class="cu-avatar round lg"></image>
+    <view class="text-grey margin-left">{{statics.name}}</view>
+  </view>
+  <view class="flex margin-top-xl">
+    <view class="flex-sub">服务次数({{statics.times}}次)</view>
+    <view>服务人数({{statics.sum}}人)</view>
+  </view>
+</view>
+<view class="padding-lr padding-bottom solid-bottom">
+  历史服务
+</view>
+<view class="cu-list menu  footer-btns">
+  <view class="cu-item arrow" wx:for="{{setmealServices}}" wx:key="index" bindtap="toUrl" data-url="/pages/serve/detail?id={{item.id}}">
+    <view class="content">
+      {{item.title}}
+    </view>
+    <view class="action">
+      <text class="text-grey text-sm">{{item.endTime}}</text>
+    </view>
+  </view>
+
+  <view class="padding-xs flex align-center" wx:if="{{setmealServices.length==0}}">
+    <view class="flex-sub text-center">
+      <view class="text-xsl padding">
+        <text class="cuIcon-info text-main"></text>
+      </view>
+      <view class="padding">历史服务暂无</view>
+    </view>
+  </view>
+</view>
+
 
 <tabBar selected="1"></tabBar>

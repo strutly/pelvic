@@ -1,0 +1,56 @@
+<wxs src="/utils/tools.wxs" module="tools"></wxs>
+<view class="padding">
+  服务详情
+</view>
+<view class="padding bg-white radius-xl margin-lr">
+  <view class="flex align-center">
+    <view class="flex-sub">服务时长:{{serve.serveTime}}</view>
+    <image src="{{serve.pic}}" wx:if="{{serve.pic}}" style="width: 80rpx; height: 80rpx;" bindtap="viewImage" data-url="{{serve.pic}}"></image>
+  </view>
+  <view class="text-right margin-top">{{serve.setmealRecord.setmeal.name}} ({{serve.setmealRecord.useTimes}}/{{serve.setmealRecord.setmeal.times}})</view>
+</view>
+
+<view class="padding">
+  客户信息
+</view>
+
+<view class="padding bg-white radius-xl margin-lr">
+  <view class="flex align-center">
+    <view class="flex-sub">{{serve.patient.name}}</view>
+    <view class="">{{serve.patient.phone}}</view>
+  </view>
+  <view class="margin-top">{{serve.patient.address}}</view>
+</view>
+<view class="padding">
+  客户评价
+</view>
+
+<view class="padding bg-white radius-xl margin-lr">
+  <view wx:if="{{serve.score}}">
+    <view class="flex align-center">
+      <view class="flex-sub">
+        服务态度评分
+      </view>
+      <view class=""><text class="cuIcon-favorfill text-yellow margin-right-xs lg" wx:for="{{serve.score}}"></text></view>
+    </view>
+    <view class="flex align-center margin-top-sm">
+      <view class="flex-sub">
+        专业态度评分
+      </view>
+      <view class=""><text class="cuIcon-favorfill text-yellow margin-right-xs lg" wx:for="{{serve.majorScore}}"></text></view>
+    </view>
+    <view class="margin-top">{{serve.evaluate}}</view>
+  </view>
+  <view class="text-center" wx:else>客户暂未评价</view>
+</view>
+<view class="padding">
+  我的评价
+</view>
+
+<view class="padding bg-white radius-xl margin-lr">
+  <view class="grid col-2 padding-sm">
+    <view wx:for="{{tools.split(serve.conclusion)}}" class="padding-xs" wx:key="index">
+      <view class="cu-btn block padding-sm line-grey" bindtap="chooseFeed" data-index="{{index}}"> {{item}}</view>
+    </view>
+  </view>
+</view>

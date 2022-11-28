@@ -9,7 +9,11 @@
     <view class="margin-top">地址:{{serve.patient.address}}</view>
   </view>
   <image src="{{pic}}" wx:if="{{pic}}" style="width: 100rpx;height: 100rpx;"></image>
-  <view class="text-gray cuIcon-camera margin-left" style="font-size: 60rpx;" bindtap="addPic" wx:if="{{(!serve.endTime && serve.needPic)}}">
+  <view class="margin-left text-center" wx:if="{{(!serve.endTime && serve.needPic)}}">
+    <view class="text-gray cuIcon-camera" style="font-size: 60rpx;" bindtap="addPic">
+      <view class="text-sm text-red">请上传服务照片</view>
+    </view>
+
   </view>
 </view>
 
@@ -17,7 +21,7 @@
   <image src="/images/hourglass.png" style="height: 120rpx;width: 120rpx;"></image>
   <view class="text-bold text-xxl">{{serveTime}}</view>
   <view class="cu-btn bg-main radius" wx:if="{{!serve.startTime}}" bindtap="start">开始服务</view>
-  <view class="cu-btn bg-main radius" wx:if="{{serve.startTime && !serve.endTime}}"  bindtap="modalStatus" data-name="Server">结束服务</view>
+  <view class="cu-btn bg-main radius" wx:if="{{serve.startTime && !serve.endTime}}" bindtap="modalStatus" data-name="Server">结束服务</view>
   <view class="cu-btn bg-grey radius" wx:if="{{serve.startTime && serve.endTime}}">服务已结束</view>
 </view>
 

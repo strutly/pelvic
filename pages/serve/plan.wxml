@@ -1,0 +1,56 @@
+<wxs src="/utils/tools.wxs" module="tools"></wxs>
+<view class="padding safe-bottom">
+  <block wx:for="{{datas}}" wx:for-item="value" wx:for-index="key" wx:key="key">
+    <view class="margin-tb">
+      {{key}}
+    </view>
+    <view class="cu-list menu radius-xl sm-border">
+      <view class="cu-item" wx:for="{{value[0]}}" wx:for-index="index" wx:key="index" wx:for-item="serve">
+        <view class="content padding-tb-sm">
+          <view>
+            {{serve.patient.name}}
+          </view>
+          <view class="text-gray text-sm  margin-top-xs">
+            {{serve.patient.phone}}
+          </view>
+        </view>
+        <view class="action text-right">
+          <view class="cu-tag bg-red round">盆底肌修复</view>
+          <view class="margin-top-xs">{{serve.patient.address}}<text class="cuIcon-locationfill text-blue margin-left-xs"></text></view>
+        </view>
+      </view>
+      <block wx:if="{{value[1]}}">
+        <view class="flex align-center bg-white">
+          <view class="flex-sub solids-bottom margin-left"></view>
+          <text class="margin-lr-sm">12:00</text>
+          <view class="flex-sub solids-bottom margin-right"></view>
+        </view>
+        <view class="cu-item" wx:for="{{value[1]}}" wx:for-index="index" wx:key="index" wx:for-item="serve">
+          <view class="content padding-tb-sm">
+            <view>
+              {{serve.patient.name}}
+            </view>
+            <view class="text-gray text-sm margin-top-xs">
+              {{serve.patient.phone}}
+            </view>
+          </view>
+          <view class="action">
+            <view class="cu-tag bg-red round">盆底肌修复</view>
+            <view class="text-right margin-top-xs">{{serve.patient.address}}<text class="cuIcon-locationfill text-blue margin-left-xs"></text></view>
+          </view>
+        </view>
+      </block>
+
+
+    </view>
+  </block>
+  
+  <view class="padding-xs flex align-center" wx:if="{{tools.emptyObject(datas)}}">
+  <view class="flex-sub text-center">
+    <view class="text-xsl padding">
+      <text class="cuIcon-info text-main"></text>
+    </view>
+    <view class="padding">暂无工作计划</view>
+  </view>
+</view>
+</view>

@@ -1,7 +1,12 @@
 <topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
 <view class="padding">
   <image class="banner" src="/images/banner.png" mode="widthFix"></image>
-  <view class="text-grey margin-tb">今日工作计划</view>
+
+
+  <view class="text-grey margin-tb flex algin-center">
+    <view class="flex-sub">今日工作计划</view>
+    <view class="cuIcon-calendar text-blue" bindtap="toUrl" data-url="/pages/serve/plan"></view>
+  </view>
   <view class="flex justify-between">
     <view class="flex-sub flex align-center bg-white margin-right-sm padding radius-xl menu" bindtap="toUrl" data-url="/pages/serve/list">
       <image class="round margin-right" src="/images/pelvic.jpg"></image>

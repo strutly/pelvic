@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/serve/task",
     "pages/index/my",
-    "pages/serve/list"
+    "pages/serve/list",
+    "pages/serve/plan",
+    "pages/serve/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

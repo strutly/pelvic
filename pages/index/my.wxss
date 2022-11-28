@@ -1,1 +1,4 @@
-/* pages/index/my.wxss */
+page{
+  background-color: var(--white) !important;
+}
+

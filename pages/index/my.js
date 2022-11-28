@@ -1,66 +1,54 @@
-// pages/index/my.js
-Page({
+var that;
+import Api from '../../config/api';
+import CustomPage from '../../CustomPage';
+CustomPage({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    domain:Api.domain,
+    statics: {},
+    setmealServices: []
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad(options) {
-
+    that = this;
+    
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  onReady(){
+    console.log("show");
+    
+    getApp().watch(function (value) {
+      if (value.login && value.auth) {
+        that.caregiverStatics();
+        that.getList(1);
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
+  async caregiverStatics() {
+    try {
+      let res = await Api.caregiverStatics();
+      that.setData({
+        statics: res.data
+      })
+    } catch (error) {
 
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
+  async getList(pageNo) {
+    try {
+      let res = await Api.setmealServiceRecord({ pageNum: pageNo });
+      console.log(res);
+      let setmealServices = that.data.setmealServices;
+      that.setData({
+        pageNo: pageNo,
+        endline: res.data.last,
+        setmealServices: setmealServices.concat(res.data.content)
+      });
+    } catch (error) {
 
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
 })
