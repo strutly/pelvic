@@ -11,7 +11,7 @@
   font-size: 14px;
   text-align: center;
   color: #fff;
-  z-index: 5000;
+  z-index: 1115000;
   word-wrap: break-word;
   word-break: break-all;
 }

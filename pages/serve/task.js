@@ -1,7 +1,9 @@
-var that, interval;
+var that, interval, callBack;
 import Api from '../../config/api';
 import CustomPage from '../../CustomPage';
 import Util from '../../utils/util';
+const recorderManager = wx.getRecorderManager();
+
 CustomPage({
 
   data: {
@@ -51,6 +53,79 @@ CustomPage({
   onUnload() {
     if (interval) clearInterval(interval);
   },
+
+  verifStart() {
+    recorderManager.start({
+      format: "wav",
+      sampleRate: 16000,
+      numberOfChannels: 1
+    });
+    that.setData({
+      start: true
+    })
+    let type = that.data.type;
+    console.log(type);
+    callBack = function (res) {
+      Api.voiceprintScore({
+        filePath: res.tempFilePath,
+        sessionId: that.data.trainingText.session_id,
+        sid: that.data.trainingText.sid
+      }).then(resp => {
+        console.log(resp);
+        let data = JSON.parse(resp.data);
+        console.log(data);
+        if (data.code == 0) {
+          that.showTips("验证成功", "success");
+          if (type == "start") {
+            that.start();
+          } else {
+            that.serveEnd();
+          }
+        } else {
+          that.showTips(data.msg);
+        }
+        that.setData({
+          modalverif: false
+        })
+      })
+    }
+    console.log(callBack)
+  },
+  onTouchEnd() {
+
+    recorderManager.stop();
+
+    recorderManager.onStop(function (res) {
+      console.log(res);
+      const { tempFilePath } = res;
+      
+      console.log(tempFilePath);
+      if(callBack){
+        console.log("come callback")
+        callBack(res);
+      }      
+    });
+
+
+
+    that.setData({
+      start: false
+    })
+  },
+  async serveStatus(e) {
+    let type = e.currentTarget.dataset.type;
+    let res = await Api.voiceprintVerif();
+    if (res.code == 0) {
+      that.setData({
+        trainingText: res.data,
+        voiceIndex: 0,
+        modalverif: true,
+        type: type
+      })
+    }else{
+      that.showTips(res.msg);
+    }
+  },
   async start() {
     let startTime = Util.formatTime(new Date());
     let res = await Api.setmealServiceUpdate({
@@ -60,20 +135,10 @@ CustomPage({
     if (res.code == 0) {
       that.showTips("操作成功,计时开始", "success");
       that.showData()
+    }else{
+      that.showTips(res.msg);
     }
     console.log(res);
-  },
-  async end() {
-
-    let res = await Api.setmealServiceUpdate({
-      id: that.data.options.id,
-
-    })
-    console.log(res);
-    if (res.code == 0) {
-      that.showTips("操作成功,服务结束", "success");
-      that.showData()
-    }
   },
   chooseFeed(e) {
     console.log(e)
@@ -99,7 +164,7 @@ CustomPage({
     }).map(item => item.title).join(",");
     console.log(conclusion);
     serve.setmealDetailItems.forEach(item => {
-      if (item.finish==undefined) {
+      if (item.finish == undefined) {
         item.finish = true;
       }
     })
@@ -111,15 +176,15 @@ CustomPage({
       setmealDetailItems: serve.setmealDetailItems
     })
 
-    let res = await Api.setmealServiceUpdate({
+    let res = await Api.setmealServiceUpdate(JSON.stringify({
       id: that.data.options.id,
       conclusion: conclusion,
-      pic:pic,
+      pic: pic,
       endTime: Util.formatTime(new Date()),
-      setmealDetailItems:serve.setmealDetailItems
-    })
+      setmealDetailItems: serve.setmealDetailItems
+    }))
     if (res.code == 0) {
-      that.showTips("评论成功","success");
+      that.showTips("评论成功", "success");
       that.setData({
         modalServer: false
       })
@@ -133,7 +198,7 @@ CustomPage({
   checkboxChange(e) {
     console.log(e);
     let serve = that.data.serve;
-    serve.setmealDetailItems[e.currentTarget.dataset.index].finish = e.detail.value[0]||false;
+    serve.setmealDetailItems[e.currentTarget.dataset.index].finish = e.detail.value[0] || false;
     that.setData({
       serve: serve
     })

@@ -21,7 +21,12 @@
 .text-underline{
   text-decoration:underline;
 }
-
+.voice{
+  font-size: 80rpx;
+  line-height: 120rpx;
+  width: 120rpx;
+  height: 120rpx;
+}
 .footer{
   z-index:10;
   position: fixed;

@@ -1,0 +1,38 @@
+<include src="/pages/template/voiceprint"></include>
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
+<view class="margin-xl padding-xl text-center text-xsl bg-white">
+  <view class="cuIcon-sound text-main"></view>
+  <view class="text-lg text-bold">声音锁</view>
+  <view class="text-df margin-top">朗读一段数字,做一把声音锁,帮您用声音直接进行任务开始与结束</view>
+
+  <view class="cu-list menu text-df sm-border margin-top-xl radius-lg" wx:if="{{voiceprint.reserve}}">
+    <view class="cu-item arrow bg-gray" bindtap="modalStatus" data-name="delete">
+      <view class="content text-left text-black">
+        删除已有声音
+      </view>
+    </view>
+    <view class="cu-item arrow bg-gray" bindtap="verif">
+      <view class="content text-left text-black">
+        尝试验证我的声音
+      </view>
+    </view>
+  </view>
+
+</view>
+
+
+<view class="footer text-center footer-btns" wx:if="{{voiceprint && !voiceprint.reserve}}">
+  <button class="cu-btn bg-main lg" bindtap="create" data-name="voiceprint">创建</button>
+</view>
+
+<view class="cu-modal bottom-modal show" wx:if="{{modaldelete}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white">
+      <view class="action text-green" bindtap="delete">确定</view>
+      <view class="action text-blue" bindtap="modalStatus" data-name="delete">取消</view>
+    </view>
+    <view class="padding-xl">
+      确认删除您的声纹吗?
+    </view>
+  </view>
+</view>

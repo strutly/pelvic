@@ -5,7 +5,8 @@
     "pages/index/my",
     "pages/serve/list",
     "pages/serve/plan",
-    "pages/serve/detail"
+    "pages/serve/detail",
+    "pages/index/voiceprint"
   ],
   "window": {
     "backgroundTextStyle": "light",

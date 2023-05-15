@@ -4,53 +4,40 @@
     <view class="margin-tb">
       {{key}}
     </view>
-    <view class="cu-list menu radius-xl sm-border">
-      <view class="cu-item" wx:for="{{value[0]}}" wx:for-index="index" wx:key="index" wx:for-item="serve">
-        <view class="content padding-tb-sm">
-          <view>
-            {{serve.patient.name}}
+
+    <view class="cu-list menu-avatar radius-xl sm-border">
+      <view class="cu-item" wx:for="{{value}}" wx:key="index">
+        <image class="cu-avatar round lg" src="{{item.patient.headImgUrl?item.patient.headImgUrl:'/images/headimg.png'}}"></image>
+        <view class="content">
+          <view class="text-grey">{{item.patient.name}}</view>
+          <view class="text-gray text-sm flex">
+            <view class="text-cut" catchtap="{{(item.patient.latitude&&item.patient.longitude)?'location':''}}" data-latitude="{{item.patient.latitude}}" data-longitude="{{item.patient.longitude}}" data-scale="18" data-name="{{item.patient.address}}" data-address="{{item.patient.address}}">
+              <text class="cuIcon-locationfill text-red  margin-right-xs"></text>
+              {{item.patient.address}}
+            </view>
           </view>
-          <view class="text-gray text-sm  margin-top-xs">
-            {{serve.patient.phone}}
+          <view class="text-gray text-sm flex" catchtap="phone" data-phone="{{item.patient.phone}}">
+            <view class="text-cut">
+              <text class="cuIcon-phone text-green  margin-right-xs"></text>
+              {{item.patient.phone}}
+            </view>
           </view>
         </view>
-        <view class="action text-right">
-          <view class="cu-tag bg-red round">盆底肌修复</view>
-          <view class="margin-top-xs">{{serve.patient.address}}<text class="cuIcon-locationfill text-blue margin-left-xs"></text></view>
+        <view class="action">
+          <view class="text-grey text-xs">{{item.appointmentTime}}点</view>
+          <view> </view>
         </view>
       </view>
-      <block wx:if="{{value[1]}}">
-        <view class="flex align-center bg-white">
-          <view class="flex-sub solids-bottom margin-left"></view>
-          <text class="margin-lr-sm">12:00</text>
-          <view class="flex-sub solids-bottom margin-right"></view>
-        </view>
-        <view class="cu-item" wx:for="{{value[1]}}" wx:for-index="index" wx:key="index" wx:for-item="serve">
-          <view class="content padding-tb-sm">
-            <view>
-              {{serve.patient.name}}
-            </view>
-            <view class="text-gray text-sm margin-top-xs">
-              {{serve.patient.phone}}
-            </view>
-          </view>
-          <view class="action">
-            <view class="cu-tag bg-red round">盆底肌修复</view>
-            <view class="text-right margin-top-xs">{{serve.patient.address}}<text class="cuIcon-locationfill text-blue margin-left-xs"></text></view>
-          </view>
-        </view>
-      </block>
-
-
     </view>
+
   </block>
-  
+
   <view class="padding-xs flex align-center" wx:if="{{tools.emptyObject(datas)}}">
-  <view class="flex-sub text-center">
-    <view class="text-xsl padding">
-      <text class="cuIcon-info text-main"></text>
+    <view class="flex-sub text-center">
+      <view class="text-xsl padding">
+        <text class="cuIcon-info text-main"></text>
+      </view>
+      <view class="padding">暂无工作计划</view>
     </view>
-    <view class="padding">暂无工作计划</view>
   </view>
-</view>
 </view>

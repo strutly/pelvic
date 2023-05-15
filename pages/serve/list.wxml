@@ -20,7 +20,7 @@
       </view>
     </view>
     <view class="action">
-      <view class="text-grey text-xs">{{item.appointmentTime==0?'上午':'下午'}}</view>
+      <view class="text-grey text-xs">{{item.appointmentTime}}点</view>
       <view> </view>
     </view>
   </view>

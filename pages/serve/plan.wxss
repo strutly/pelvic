@@ -1,3 +1,0 @@
-.cu-list.menu>.cu-item:after{
-  border-bottom:none;
-}

@@ -2,6 +2,7 @@
   <view class="flex align-center">
     <image src="{{statics.pic?domain+'/'+statics.pic:'/images/headimg.png'}}" class="cu-avatar round lg"></image>
     <view class="text-grey margin-left">{{statics.name}}</view>
+    <view class="flex-sub text-right" bindtap="toUrl" data-url="/pages/index/voiceprint"><text class="cuIcon-sound"></text>声音锁</view>
   </view>
   <view class="flex margin-top-xl">
     <view class="flex-sub">服务次数({{statics.times}}次)</view>

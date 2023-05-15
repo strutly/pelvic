@@ -1,0 +1,18 @@
+<view class="flex bg-white flex-direction text-center align-center" style="position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index:11100" wx:if="{{modalvoiceprint}}">
+  <view class="padding-top-xl margin-top-xl">按住下方按钮，匀速读出数字</view>
+  <view class="margin-top-xl text-sl text-bold">{{trainingText.text[voiceIndex||0]}}</view>
+  <view class="flex-sub"></view>
+  <view class="bg-main cuIcon-voicefill voice round {{start?'round-border':''}}" catch:touchend="onTouchEnd" bind:touchstart="onTouchStart" data-index="{{voiceIndex}}"></view>
+  <view class="margin-top text-gray"  bindtap="modalStatus" data-name="voiceprint">取消</view>
+  <view class="padding-bottom-xl footer-btns"></view>
+</view>
+
+
+<view class="flex bg-white flex-direction text-center align-center" style="position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index:111100" wx:if="{{modalverif}}">
+  <view class="padding-top-xl margin-top-xl">按住下方按钮，匀速读出数字</view>
+  <view class="margin-top-xl text-sl text-bold">{{trainingText.text}}</view>
+  <view class="flex-sub"></view>
+  <view class="bg-main cuIcon-voicefill voice round {{start?'round-border':''}}" catch:touchend="onTouchEnd" bind:touchstart="verifStart" data-index="{{voiceIndex}}"></view>
+  <view class="margin-top text-gray"  bindtap="modalStatus" data-name="verif">取消</view>
+  <view class="padding-bottom-xl footer-btns"></view>
+</view>

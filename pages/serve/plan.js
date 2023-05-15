@@ -15,6 +15,20 @@ CustomPage({
   onShow(){
     that.getHomeData(Util.formatDate(new Date()));
   },
+  location(e) {
+    wx.openLocation(e.currentTarget.dataset)
+  },
+  phone(e) {
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.phone,
+      success: function () {
+        console.log("拨打电话成功！")
+      },
+      fail: function () {
+        console.log("拨打电话失败！")
+      }
+    })
+  },
   async getHomeData(date) {
     console.log("homedata")
     try {
