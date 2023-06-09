@@ -1,6 +1,6 @@
 {
   "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
-  "projectname": "esd-health",
+  "projectname": "pelvic",
   "setting": {
     "compileHotReLoad": true,
     "urlCheck": false
@@ -10,8 +10,8 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/serve/task",
-          "query": "id=118",
+          "pathName": "pages/summary/add",
+          "query": "id=3",
           "launchMode": "default",
           "scene": null
         }

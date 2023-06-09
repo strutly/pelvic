@@ -1,54 +1,69 @@
 var that;
 const app = getApp()
 import Api from '../../config/api';
-import Util from '../../utils/util';
 import CustomPage from '../../CustomPage';
 CustomPage({
 
+  /**
+   * 页面的初始数据
+   */
   data: {
-    datas: [],
-    domain: Api.domain,
-    minDate: Util.formatDate(new Date()),
-    appointmentDay: Util.formatDate(new Date())
+
   },
 
+  /**
+   * 生命周期函数--监听页面加载
+   */
   onLoad(options) {
-    that = this;
+
   },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
   onShow() {
-    that.getHomeData(Util.formatDate(new Date()));
+
   },
-  async getHomeData(date) {
-    console.log("homedata")
-    try {
-      let res = await Api.homeData();
-      console.log(res);
-      that.setData({
-        datas: res.data
-      })
-    } catch (error) {
-      console.log(error)
-    }
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide() {
+
   },
-  dateChange(e) {
-    console.log(e);
-    that.setData({
-      appointmentDay: e.detail.value
-    })
-    that.getHomeData(e.detail.value);
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload() {
+
   },
-  location(e) {
-    wx.openLocation(e.currentTarget.dataset)
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+
   },
-  phone(e) {
-    wx.makePhoneCall({
-      phoneNumber: e.currentTarget.dataset.phone,
-      success: function () {
-        console.log("拨打电话成功！")
-      },
-      fail: function () {
-        console.log("拨打电话失败！")
-      }
-    })
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage() {
+
   }
 })

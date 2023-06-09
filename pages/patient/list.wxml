@@ -1,0 +1,18 @@
+<view class="padding">
+  <view class="flex align-center bg-white radius-xl padding-sm">
+    <input class="flex-sub" placeholder="输入搜索的关键词" confirm-type="search" bindconfirm="submit"></input>
+    <text class="cuIcon-search"></text>
+  </view>
+  <view class="text-white text-lg margin-top">
+    <text class="cuIcon-titles"></text>客户信息
+  </view>
+
+  <view class="cu-list menu radius-xl margin-top">
+    <view class="cu-item arrow" wx:for="{{patients}}" wx:key="index" bindtap="toUrl" data-url="/pages/patient/detail?id={{item.id}}">
+      <view class="content">
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,31 @@
+<wxs src="/utils/tools.wxs" module="Tools"></wxs>
+<view class="padding flex flex-direction">
+  <view style="order:{{Tools.diffDay(key)}}" wx:for="{{plan}}" wx:for-index="key" wx:key="key" wx:for-item="appointments">
+    <view class="text-white margin-tb">{{Tools.planDay(key)}}</view>
+    <view class="bg-white radius-xl">
+      <view class="solid-bottom padding" wx:for="{{appointments}}" wx:key="index">
+        <view class="flex">
+          <view class="flex-sub">
+            {{item.puerperalPatient.name}}
+          </view>
+          <view style="color:{{Tools.appointmentColor(item.appointmentTime)}}">
+            {{Tools.appointmentTime(item.appointmentTime)}}
+          </view>
+        </view>
+        <view class="margin-top flex align-center">
+          <view class="flex-sub">
+            {{item.puerperalPatient.phone}}
+          </view>
+          <view class="margin-left text-right text-gray">
+            {{item.puerperalPatient.address}}<text class="text-main margin-left-xs cuIcon-locationfill"></text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+
+  </view>
+
+
+</view>

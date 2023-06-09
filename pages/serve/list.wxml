@@ -1,36 +1,41 @@
-<view class="cu-form-group">
-  <view class="title">今日工作计划</view>
+<view class="padding">
+  <view class="cuIcon-titles text-white">历史服务</view>
 </view>
-<view class="cu-list menu-avatar">
-  <view class="cu-item arrow" wx:for="{{datas}}" wx:key="index" bindtap="toUrl" data-url="/pages/serve/task?id={{item.id}}">
-    <image class="cu-avatar round lg" src="{{item.patient.headImgUrl?item.patient.headImgUrl:'/images/headimg.png'}}"></image>
-    <view class="content">
-      <view class="text-grey">{{item.patient.name}}</view>
-      <view class="text-gray text-sm flex">
-        <view class="text-cut"  catchtap="{{(item.patient.latitude&&item.patient.longitude)?'location':''}}" data-latitude="{{item.patient.latitude}}" data-longitude="{{item.patient.longitude}}" data-scale="18" data-name="{{item.patient.address}}" data-address="{{item.patient.address}}">
-          <text class="cuIcon-locationfill text-red  margin-right-xs"></text>
-          {{item.patient.address}}
-        </view>
-      </view>
-      <view class="text-gray text-sm flex" catchtap="phone" data-phone="{{item.patient.phone}}">
-        <view class="text-cut">
-          <text class="cuIcon-phone text-green  margin-right-xs"></text>
-          {{item.patient.phone}}
-        </view>
-      </view>
+<view class="cu-list menu sm-border">
+  <view class="cu-item arrow ">
+    <view class="content">盆底肌修复-中医疗法
     </view>
-    <view class="action">
-      <view class="text-grey text-xs">{{item.appointmentTime}}点</view>
-      <view> </view>
-    </view>
+    <view class="action text-grey">2023-05-02 11:12:20</view>
   </view>
-</view>
-<view class="padding-xs flex align-center" wx:if="{{datas.length==0}}">
-  <view class="flex-sub text-center">
-    <view class="text-xsl padding">
-      <text class="cuIcon-info text-main"></text>
+  <view class="cu-item arrow ">
+    <view class="content">盆底肌修复-中医疗法
     </view>
-    
-    <view class="padding">今日计划暂无</view>
+    <view class="action text-grey">2023-05-02 11:12:20</view>
   </view>
+  <view class="cu-item arrow ">
+    <view class="content">盆底肌修复-中医疗法
+    </view>
+    <view class="action text-grey">2023-05-02 11:12:20</view>
+  </view>
+  <view class="cu-item arrow ">
+    <view class="content">盆底肌修复-中医疗法
+    </view>
+    <view class="action text-grey">2023-05-02 11:12:20</view>
+  </view>
+  <view class="cu-item arrow ">
+    <view class="content">盆底肌修复-中医疗法
+    </view>
+    <view class="action text-grey">2023-05-02 11:12:20</view>
+  </view>
+  <view class="cu-item arrow ">
+    <view class="content">盆底肌修复-中医疗法
+    </view>
+    <view class="action text-grey">2023-05-02 11:12:20</view>
+  </view>
+  <view class="cu-item arrow ">
+    <view class="content">盆底肌修复-中医疗法
+    </view>
+    <view class="action text-grey">2023-05-02 11:12:20</view>
+  </view>
+
 </view>

@@ -1,0 +1,21 @@
+<view class="padding">
+  <view class="cu-list menu radis-xl sm-border">
+    <view class="cu-item" wx:for="{{summarys}}" wx:key="index" bindtap="toUrl" data-url="{{item.status?'/pages/summary/detail?id=':'/pages/summary/add?type=update&id='}}{{item.id}}">
+      <view class="content padding-tb-sm">
+        <view>
+          {{item.name}}({{item.phone}})
+        </view>
+        <view class="text-gray text-sm">
+          {{item.createTime}}
+        </view>
+      </view>
+      <view class="action">
+        <view class="cu-tag  bg-main round">{{item.setmealRecordName}}</view>
+      </view>
+      <view class="tag" wx:if="{{!item.status}}"></view>
+    </view>
+  </view>
+
+
+
+</view>

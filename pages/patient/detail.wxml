@@ -1,0 +1,42 @@
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
+<view class="padding-lr padding-top bg-main">
+  <view class="padding-tb padding-lr-xl bg-white text-main radius-top">
+    <view class="flex align-center">
+      <image style="width: 150rpx;height: 150rpx;" src="/images/head.png"></image>
+      <text class="margin-left text-main">{{patient.name}}</text>
+    </view>
+    <view class="margin-top-sm">年龄:{{patient.age}}</view>
+    <view class="margin-top-sm">电话:{{patient.phone}}</view>
+    <view class="margin-top-sm">地址:{{patient.address}}</view>
+    <view class="flex flex-wrap justify-between margin-top-sm">
+      <view class="bg-main radius-xl padding-xs padding-lr" data-url="/pages/assess/add?id={{options.id}}" bindtap="toUrl">康复评估</view>
+      <view class="bg-main radius-xl padding-xs padding-lr" data-url="/pages/patient/files?id={{options.id}}" bindtap="toUrl">档案管理</view>
+    </view>
+  </view>
+</view>
+<view class="bg-white solids-top ">
+  <view class="text-main padding">
+    <text class="cuIcon-titles"></text>已购套餐
+  </view>
+  <view class="padding-lr">
+    <view class="flex align-center padding-tb solid-bottom" wx:for="{{patient.records}}" wx:key="index">
+      <view class="flex-sub">
+        <view>
+          <text class="text-bold">{{item.setmealName}}</text>
+          <text class="margin-left bg-{{item.status?'grey':'yellow'}} padding-lr-xs radius">{{item.status?'已完成':'服务中'}}</text>
+        </view>
+        <view class="text-gray margin-top-sm">服务次数:(总次数:{{item.sumTimes}}/已使用:{{item.useTimes}})</view>
+      </view>
+      <view class="bg-main radius-xl padding-xs padding-lr" bindtap="serve" data-patient-id="{{options.id}}" data-setmeal-record-id="{{item.id}}">康复训练</view>
+    </view>
+
+  </view>
+
+
+
+
+
+
+
+
+</view>

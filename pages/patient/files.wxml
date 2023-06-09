@@ -1,0 +1,59 @@
+<view class="padding">
+  <view class="text-white text-lg">
+    <text class="cuIcon-titles"></text>客户信息
+  </view>
+  <view class="padding bg-white margin-top radius-xl text-lg">
+    <view class="flex solid-bottom padding-tb-sm">
+      <view class="flex-sub">
+        <text class="text-gray margin-right-sm">姓名:</text><text>{{patient.name}}</text>
+      </view>
+      <view class="margin-right-xl padding-right-xl">
+        <text class="text-gray margin-right-sm">年龄:</text><text>{{patient.age}}</text>
+      </view>
+    </view>
+    <view class="solid-bottom padding-tb-sm">
+      <text class="text-gray margin-right-sm">电话:</text><text>{{patient.phone}}</text>
+    </view>
+    <view class="flex padding-tb-sm">
+      <text class="text-gray margin-right-sm">地址:</text>
+      <text class="flex-sub">{{patient.address}}</text>
+    </view>
+  </view>
+
+  <form>
+    <view class="text-white text-lg margin-top">
+      <text class="cuIcon-titles"></text>职业背景
+    </view>
+    <view class="cu-form-group margin-top radius-xl">
+      <textarea maxlength="-1" data-name="职业背景" bindblur="textareaChange"  placeholder="职业背景" value="{{patient.file['职业背景']}}"></textarea>
+    </view>
+    <view class="text-white text-lg margin-top">
+      <text class="cuIcon-titles"></text>消费能力
+    </view>
+    <view class="cu-form-group margin-top radius-xl">
+      <textarea maxlength="-1" data-name="消费能力" bindblur="textareaChange"  placeholder="消费能力" value="{{patient.file['消费能力']}}"></textarea>
+    </view>
+    <view class="text-white text-lg margin-top">
+      <text class="cuIcon-titles"></text>家庭状况
+    </view>
+    <view class="cu-form-group margin-top radius-xl">
+      <textarea maxlength="-1" data-name="家庭状况" bindblur="textareaChange"  placeholder="家庭状况" value="{{patient.file['家庭状况']}}"></textarea>
+    </view>
+    <view class="text-white text-lg margin-top">
+      <text class="cuIcon-titles"></text>其他消费需求
+    </view>
+    <view class="cu-form-group margin-top radius-xl">
+      <textarea maxlength="-1" data-name="其他消费需求" bindblur="textareaChange"  placeholder="其他消费需求" value="{{patient.file['其他消费需求']}}"></textarea>
+    </view>
+
+    <view class="margin-top padding-bottom-xl">
+      <view bindtap="submit" class=" cu-btn  flex padding-tb-xl bg-white  radius-xl margin text-xl">
+        提交
+      </view>
+    </view>
+
+  </form>
+
+
+
+</view>

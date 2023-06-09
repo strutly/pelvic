@@ -1,56 +1,92 @@
-<wxs src="/utils/tools.wxs" module="tools"></wxs>
 <view class="padding">
-  服务详情
-</view>
-<view class="padding bg-white radius-xl margin-lr">
-  <view class="flex align-center">
-    <view class="flex-sub">服务时长:{{serve.serveTime}}</view>
-    <image src="{{serve.pic}}" wx:if="{{serve.pic}}" style="width: 80rpx; height: 80rpx;" bindtap="viewImage" data-url="{{serve.pic}}"></image>
+  <view class="text-white text-lg">
+    <text class="cuIcon-titles"></text>客户信息
   </view>
-  <view class="text-right margin-top">{{serve.setmealRecord.setmeal.name}} ({{serve.setmealRecord.useTimes}}/{{serve.setmealRecord.setmeal.times}})</view>
-</view>
-
-<view class="padding">
-  客户信息
-</view>
-
-<view class="padding bg-white radius-xl margin-lr">
-  <view class="flex align-center">
-    <view class="flex-sub">{{serve.patient.name}}</view>
-    <view class="">{{serve.patient.phone}}</view>
-  </view>
-  <view class="margin-top">{{serve.patient.address}}</view>
-</view>
-<view class="padding">
-  客户评价
-</view>
-
-<view class="padding bg-white radius-xl margin-lr">
-  <view wx:if="{{serve.score}}">
-    <view class="flex align-center">
+  <view class="padding bg-white margin-top radius-xl text-lg">
+    <view class="flex solid-bottom padding-tb-sm">
       <view class="flex-sub">
-        服务态度评分
+        <text class="text-gray margin-right-sm">姓名:</text><text>林小姐</text>
       </view>
-      <view class=""><text class="cuIcon-favorfill text-yellow margin-right-xs lg" wx:for="{{serve.score}}"></text></view>
+      <view class="margin-right-xl padding-right-xl">
+        <text class="text-gray margin-right-sm">年龄:</text><text>40</text>
+      </view>
     </view>
-    <view class="flex align-center margin-top-sm">
+    <view class="solid-bottom padding-tb-sm">
+      <text class="text-gray margin-right-sm">电话:</text><text>15073132755</text>
+    </view>
+    <view class="flex padding-tb-sm">
+      <text class="text-gray margin-right-sm">地址:</text>
+      <text class="flex-sub">深圳市南山区西丽街道大学城创意园A509</text>
+    </view>
+  </view>
+  <view class="text-white text-lg margin-top">
+    <text class="cuIcon-titles"></text>服务详情
+  </view>
+  <view class="padding bg-white margin-top radius-xl text-lg">
+    <view class="flex solid-bottom padding-tb-sm">
       <view class="flex-sub">
-        专业态度评分
+        <text class="text-gray margin-right-sm">服务项目:</text><text>盆底肌修复-中医疗法(1/3)</text>
       </view>
-      <view class=""><text class="cuIcon-favorfill text-yellow margin-right-xs lg" wx:for="{{serve.majorScore}}"></text></view>
-    </view>
-    <view class="margin-top">{{serve.evaluate}}</view>
-  </view>
-  <view class="text-center" wx:else>客户暂未评价</view>
-</view>
-<view class="padding">
-  我的评价
-</view>
 
-<view class="padding bg-white radius-xl margin-lr">
-  <view class="grid col-2 padding-sm">
-    <view wx:for="{{tools.split(serve.conclusion)}}" class="padding-xs" wx:key="index">
-      <view class="cu-btn block padding-sm line-grey" bindtap="chooseFeed" data-index="{{index}}"> {{item}}</view>
+    </view>
+    <view class="solid-bottom padding-tb-sm">
+      <text class="text-gray margin-right-sm">服务时间:</text><text>2023-05-03 14:30-15:30</text>
+    </view>
+    <view class="flex padding-tb-sm">
+      <text class="text-gray margin-right-sm">服务时长:</text>
+      <text class="flex-sub">00:55:38</text>
     </view>
   </view>
+
+  <view class="text-white text-lg margin-top">
+    <text class="cuIcon-titles"></text>服务评价
+  </view>
+  <view class="padding bg-white margin-top radius-xl text-lg">
+    <view class="flex solid-bottom padding-tb-sm">
+      <view class="flex-sub flex align-center">
+        <text class="text-gray margin-right-sm flex-sub">服务态度:</text>
+        <text class="cuIcon-favorfill text-yellow margin-left-xs"></text>
+        <text class="cuIcon-favorfill text-yellow margin-left-xs"></text>
+        <text class="cuIcon-favorfill text-yellow margin-left-xs"></text>
+        <text class="cuIcon-favorfill text-yellow margin-left-xs"></text>
+        <text class="cuIcon-favor text-grey margin-left-xs"></text>
+      </view>
+    </view>
+    <view class="solid-bottom padding-tb-sm">
+      <view class="flex-sub flex align-center">
+        <text class="text-gray margin-right-sm flex-sub">专业态度:</text>
+        <text class="cuIcon-favorfill text-yellow margin-left-xs"></text>
+        <text class="cuIcon-favorfill text-yellow margin-left-xs"></text>
+        <text class="cuIcon-favorfill text-yellow margin-left-xs"></text>
+        <text class="cuIcon-favorfill text-yellow margin-left-xs"></text>
+        <text class="cuIcon-favor text-grey margin-left-xs"></text>
+      </view>
+    </view>
+    <view class="flex padding-tb-sm">
+      <text class="text-gray margin-right-sm">评价内容:</text>
+      <text class="flex-sub">服务态度很好,手法很专业,希望能有很好的效果</text>
+    </view>
+  </view>
+
+  <view class="text-white text-lg margin-top">
+    <text class="cuIcon-titles"></text>康复小结
+  </view>
+
+  <view class="padding bg-white margin-top radius-xl text-lg">
+    <view class="flex solid-bottom padding-tb-sm">
+      客户在服务过程中配合很好,反应良好,修复效果很明显
+    </view>
+    <view class="grid col-3 grid-square">
+      <view>
+        <image src="/images/custom.png" mode="widthFix"></image>
+      </view>
+      <view>
+        <image src="/images/custom.png" mode="widthFix"></image>
+      </view>
+    </view>
+
+
+  </view>
+
+
 </view>

@@ -6,7 +6,8 @@ CustomPage({
   data: {
     domain:Api.domain,
     statics: {},
-    setmealServices: []
+    setmealServices: [],
+    datas:{}
   },
 
   onLoad(options) {
@@ -14,17 +15,29 @@ CustomPage({
     
   },
 
-  onReady(){
+  onShow(){
     console.log("show");
     
     getApp().watch(function (value) {
+      console.log(value)
       if (value.login && value.auth) {
         that.caregiverStatics();
-        that.getList(1);
+        that.getHomeData();
       }
     })
   },
-
+  async getHomeData() {
+    console.log("homedata")
+    try {
+      let res = await Api.homeData();
+      console.log(res);      
+      that.setData({
+        datas: res.data||{}
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  },
   async caregiverStatics() {
     try {
       let res = await Api.caregiverStatics();
@@ -32,23 +45,17 @@ CustomPage({
         statics: res.data
       })
     } catch (error) {
-
+      console.log(error)
     }
   },
-
-  async getList(pageNo) {
-    try {
-      let res = await Api.setmealServiceRecord({ pageNum: pageNo });
-      console.log(res);
-      let setmealServices = that.data.setmealServices;
-      that.setData({
-        pageNo: pageNo,
-        endline: res.data.last,
-        setmealServices: setmealServices.concat(res.data.content)
-      });
-    } catch (error) {
-
-    }
-  },
+  toWork(){
+    let datas = that.data.datas;
+    console.log(datas['id'])
+    if(!datas['id']) return that.showToast("暂无工作中的服务");
+    wx.navigateTo({
+      url: `/pages/serve/task?id=${datas.id}`
+    })
+  }
+  
 
 })

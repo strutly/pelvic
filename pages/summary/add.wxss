@@ -1,0 +1,23 @@
+page{
+  background-color: var(--main);
+}
+
+.solids-main{
+  border:2rpx solid var(--main);
+}
+.modal-box{
+  position: fixed;
+  bottom: 0;  
+  left: 0;
+  top: 0;
+  right: 0;
+  background-color: rgba(180,180,180,0.6);
+  z-index:100;  
+}
+.modal-bg{
+  min-height: 10vh;
+}
+.modal-content{
+  overflow: hidden;
+  border-radius: 5vw 5vw 0 0;
+}

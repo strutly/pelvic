@@ -1,17 +1,18 @@
 <topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
 <view class="padding">
-  <image class="banner" src="/images/banner.png" mode="widthFix"></image>
+  
+  <view class="padding text-center bg-grey radius-xl margin-bottom" wx:if="{{datas.id}}">您有项目正在服务中,请点击:<text class="text-yellow" bindtap="toUrl" data-url="/pages/serve/task?id={{datas.id}}">继续</text></view>
 
+  <image class="banner" src="/images/banner.png" mode="widthFix"></image>
 
   <view class="text-grey margin-tb flex algin-center">
     <view class="flex-sub">今日工作计划</view>
-    <view class="cuIcon-calendar text-blue" bindtap="toUrl" data-url="/pages/serve/plan"></view>
+    <view class="cuIcon-calendar text-blue" bindtap="toUrl" data-url="/pages/appointment/plan"></view>
   </view>
   <view class="flex justify-between">
-    <view class="flex-sub flex align-center bg-white margin-right-sm padding radius-xl menu" bindtap="toUrl" data-url="/pages/serve/list">
-      <image class="round margin-right" src="/images/pelvic.jpg"></image>
+    <view class="flex-sub flex align-center bg-white margin-right-sm padding radius-xl menu"  bindtap="toUrl" data-url="/pages/appointment/list">
+      <image class="round margin-right" src="/images/pelvic.png"></image>
       <text>盆底肌修复</text>
-      <view class="cu-tag badge" wx:if="{{datas.length>0}}">{{datas.length}}</view>
     </view>
     <view class="flex-sub flex align-center bg-white margin-left-sm padding radius-xl menu">
       <image class="round margin-right" src="/images/apoplexy.jpg"></image>
@@ -59,7 +60,21 @@
 </view>
 
 
-<tabBar selected="0"></tabBar>
+<view class="flex text-center bg-white shadow tabbar">  
+  <view class="flex-sub" bindtap="toWork">
+    <view class='cuIcon-cu-image padding-top-sm'>
+      <image  src="/images/pelvic.png"></image>
+    </view>
+    <view class="footer-des text-black">工作台</view>
+  </view>
+
+  <view class="flex-sub" bindtap="toUrl"  data-url="/pages/index/my">
+    <view class='cuIcon-cu-image padding-top-sm'>
+      <image  src="/images/tab1-0.jpg"></image>
+    </view>
+    <view class="footer-des text-gray">个人中心</view>
+  </view>
+</view>
 
 <view class="cu-modal show" wx:if="{{modalauth}}">
   <view class="cu-dialog sm">

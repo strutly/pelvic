@@ -1,0 +1,81 @@
+<wxs src="/utils/tools.wxs" module="Tools"></wxs>
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
+<view class="padding">
+  <view class="text-white text-lg">
+    <text class="cuIcon-titles"></text>客户信息
+  </view>
+  <view class="padding bg-white margin-top radius-xl text-lg">
+    <view class="flex solid-bottom padding-tb-sm">
+      <view class="flex-sub">
+        <text class="text-gray margin-right-sm">姓名:</text><text>{{record.patient.name}}</text>
+      </view>
+      <view class="margin-right-xl padding-right-xl">
+        <text class="text-gray margin-right-sm">年龄:</text><text>{{record.patient.age}}</text>
+      </view>
+    </view>
+    <view class="solid-bottom padding-tb-sm">
+      <text class="text-gray margin-right-sm">电话:</text><text>{{record.patient.phone}}</text>
+    </view>
+    <view class="flex padding-tb-sm">
+      <text class="text-gray margin-right-sm">地址:</text>
+      <text class="flex-sub">{{record.patient.address}}</text>
+    </view>
+  </view>
+  <view class="text-white text-lg margin-top">
+    <text class="cuIcon-titles"></text>服务详情
+  </view>
+  <view class="padding bg-white margin-top radius-xl text-lg">
+    <view class="flex solid-bottom padding-tb-sm">
+      <view class="flex-sub">
+        <text class="text-gray margin-right-sm">服务项目:</text><text>{{record.setmeal.setmealName}}({{record.setmeal.useTimes}}/{{record.setmeal.sumTimes}})</text>
+      </view>
+
+    </view>
+    <view class="solid-bottom padding-tb-sm">
+      <text class="text-gray margin-right-sm">服务时间:</text><text>{{record.startTime}}-{{Tools.dateFormat(record.endTime,'hh:mm:ss')}}</text>
+    </view>
+    <view class="flex padding-tb-sm">
+      <text class="text-gray margin-right-sm">服务时长:</text>
+      <text class="flex-sub">{{record.serveTime}}</text>
+    </view>
+  </view>
+  <view class="text-white text-lg margin-top">
+    <text class="cuIcon-titles"></text>训练项目
+  </view>
+
+  <view class="padding bg-white margin-top radius-xl">
+    <view class="solid-bottom" wx:for="{{record.serves}}" wx:for-item="value" wx:for-index="key" wx:key="key">
+      <view>
+        <view class="text-bold text-main  margin-top">{{key}}</view>
+        <view class="cu-list menu">
+          <view class="cu-item" wx:for="{{value}}">
+            <view class="content">
+              {{item.name}}
+            </view>
+            <view class="action">
+              {{item.value}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="text-white text-lg margin-top">
+    <text class="cuIcon-titles"></text>评论
+  </view>
+  <view class="margin-top bg-white padding radius-xl">
+    <view>{{record.summaryDetail.summary}}</view>
+    <view class="grid col-4 grid-square margin-top">
+      <view class="bg-img" wx:for="{{record.summaryDetail.imgList}}" wx:key="index" bindtap="viewImage" data-url="{{item}}">
+        <image src="{{item}}" mode="aspectFill"></image>
+        <view class="cu-tag bg-red" data-index="{{index}}">
+          <text class='cuIcon-close'></text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+
+
+</view>

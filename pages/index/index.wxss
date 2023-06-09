@@ -1,4 +1,21 @@
-
+.tabbar{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.cuIcon-cu-image image{
+  width: 80rpx !important;
+  height: 80rpx !important;
+}
+.footer-des{
+  font-size: 32rpx;
+  color:#555;
+  padding-bottom:50rpx;
+}
+.text-gray{
+  color:#aaa;
+}
 .banner{
   width: 100%;
 }

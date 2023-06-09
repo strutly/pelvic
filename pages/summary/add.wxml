@@ -1,0 +1,123 @@
+<wxs src="/utils/tools.wxs" module="Tools"></wxs>
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
+<view class="padding">
+  <view class="text-white text-lg">
+    <text class="cuIcon-titles"></text>客户信息
+  </view>
+  <view class="padding bg-white margin-top radius-xl text-lg">
+    <view class="flex solid-bottom padding-tb-sm">
+      <view class="flex-sub">
+        <text class="text-gray margin-right-sm">姓名:</text><text>{{record.patient.name}}</text>
+      </view>
+      <view class="margin-right-xl padding-right-xl">
+        <text class="text-gray margin-right-sm">年龄:</text><text>{{record.patient.age}}</text>
+      </view>
+    </view>
+    <view class="solid-bottom padding-tb-sm">
+      <text class="text-gray margin-right-sm">电话:</text><text>{{record.patient.phone}}</text>
+    </view>
+    <view class="flex padding-tb-sm">
+      <text class="text-gray margin-right-sm">地址:</text>
+      <text class="flex-sub">{{record.patient.address}}</text>
+    </view>
+  </view>
+  <view class="text-white text-lg margin-top">
+    <text class="cuIcon-titles"></text>服务详情
+  </view>
+  <view class="padding bg-white margin-top radius-xl text-lg">
+    <view class="flex solid-bottom padding-tb-sm">
+      <view class="flex-sub">
+        <text class="text-gray margin-right-sm">服务项目:</text><text>{{record.setmeal.setmealName}}({{record.setmeal.useTimes}}/{{record.setmeal.sumTimes}})</text>
+      </view>
+
+    </view>
+    <view class="solid-bottom padding-tb-sm">
+      <text class="text-gray margin-right-sm">服务时间:</text><text>{{record.startTime}}-{{Tools.dateFormat(record.endTime,'hh:mm:ss')}}</text>
+    </view>
+    <view class="flex padding-tb-sm">
+      <text class="text-gray margin-right-sm">服务时长:</text>
+      <text class="flex-sub">{{record.serveTime}}</text>
+    </view>
+  </view>
+  <view class="text-white text-lg margin-top">
+    <text class="cuIcon-titles"></text>训练项目
+  </view>
+
+  <view class="padding bg-white margin-top radius-xl">
+    <view wx:for="{{trainProgramMap}}" wx:for-item="value" wx:for-index="key" wx:key="key">
+      <view>
+        <view class="text-bold text-main  margin-top">{{key}}</view>
+        <checkbox-group style="width: 100%;" bindchange="checkboxChange" data-key="{{key}}">
+          <view class="grid col-2">
+            <view class="flex align-center margin-top" wx:for="{{value}}" wx:for-item="train" wx:key="train">
+              <checkbox class='main round' value="{{train.id}}"></checkbox>
+              <text class="margin-left">{{train.name}}</text>
+            </view>
+          </view>
+        </checkbox-group>
+      </view>
+    </view>
+
+
+
+
+  </view>
+
+
+  <view class="padding flex margin-top text-lg text-center">
+    <view class="flex-sub padding bg-white radius-xl" bindtap="next" data-name="Train">下一步</view>
+  </view>
+
+
+</view>
+
+<view class="modal-box  flex flex-direction" catchtouchmove="true" wx:if="{{modalTrain}}">
+  <view class="modal-bg flex-sub" bindtap="modalStatus" data-name="Train"></view>
+  <view class="modal-content bg-main  flex flex-direction padding">
+    <scroll-view style="min-height:45vh;" class="padding-bottom-xl" scroll-y="true">
+      <view class="text-white text-lg margin-tb">
+        <text class="cuIcon-titles"></text>训练项目
+      </view>
+      <view class=" bg-white padding radius-xl">
+        <view wx:for="{{trainCheckMap}}" wx:for-index="key" wx:for-item="item" class="solid-bottom margin-top padding-bottom">
+          <view class="text-main">{{key}}</view>
+          <view class="flex align-center margin-top" wx:for="{{item}}" wx:for-item="train" wx:key="index">
+            <view class="flex-sub">{{train.name}}</view>
+            <picker bindchange="pickerChange" data-parent="{{key}}" data-id="{{train.id}}" data-index="{{index}}" data-name="{{train.name}}" class="margin-left flex-twice text-right solids-main radius-xl padding-xs" range="{{train.optionList}}">
+              <text>{{trainValue[key+'-'+train.name]?trainValue[key+'-'+train.name].value:'请选择'}}</text><text class="cuIcon-right"></text>
+            </picker>
+          </view>
+        </view>
+      </view>
+      <view class="text-white text-lg margin-tb">
+        <text class="cuIcon-titles"></text>康复小结
+      </view>
+      <view class=" bg-white padding radius-xl">
+        <view class="flex">
+          <textarea bindblur="textareaChange" class="flex-sub padding solid" maxlength="-1" :disabled="modalName!=null" bindchange="textareaAInput" placeholder="多行文本输入框"></textarea>
+        </view>
+        <view class="cu-form-group margin-top-sm">
+          <view class="grid col-4 grid-square flex-sub">
+            <view class="bg-img" wx:for="{{imgList}}" wx:key="index" bindtap="viewImage" data-url="{{item}}">
+              <image src="{{item}}" mode="aspectFill"></image>
+              <view class="cu-tag bg-red" data-index="{{index}}">
+                <text class='cuIcon-close'></text>
+              </view>
+            </view>
+            <view class="solids" bindtap="addPic" wx:if="{{imgList.length<4}}">
+              <text class='cuIcon-cameraadd'></text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+
+
+      <button class="bg-white margin-top radius-xl"  bindtap="submit" data-type="submit">提交康复小结</button>
+
+
+    </scroll-view>
+
+
+  </view>
+</view>

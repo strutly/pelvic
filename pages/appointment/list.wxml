@@ -1,0 +1,55 @@
+<view class="padding">
+  <view class="flex align-center bg-white radius-xl padding-sm">
+    <input class="flex-sub" placeholder="输入搜索的关键词" confirm-type="search" bindconfirm="submit"></input>
+    <text class="cuIcon-search"></text>
+  </view>
+  <view class="text-white margin-top">
+    <text class="cuIcon-titles"></text>今日预约
+  </view>
+  <view class="margin-top bg-white padding radius-lg" wx:for="{{appointments}}" wx:key="index">
+    <text class="bg-main radius-lg padding-lr-xs">已预约</text>
+    <text class="padding-lr-xs">{{item.timeDes}}</text>
+    <view class="flex margin-top">
+      <image class="margin-right-sm" style="width: 100rpx;height: 100rpx;" src="/images/head.png"></image>
+      <view class="flex-sub flex align-center">
+        <view class="flex-sub">
+          <text>{{item.puerperalPatient.name}}</text>
+          <view class="flex margin-top-xs">
+            <image src="/images/phone.png" style="width: 30rpx;height: 30rpx;"></image>
+            <text class="margin-left-xs flex-sub">{{item.puerperalPatient.phone}}</text>
+          </view>
+          <view class="flex margin-top-xs">
+            <image src="/images/position.png" style="width: 30rpx;height: 30rpx;"></image>
+            <text class="margin-left-xs flex-sub">{{item.puerperalPatient.address}}</text>
+          </view>
+        </view>
+        <view class="bg-main padding-lr round padding-tb-xs margin-left-xs" bindtap="toUrl" data-url="/pages/patient/detail?id={{item.puerperalPatient.id}}" >康复训练</view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="text-white margin-top">
+    <text class="cuIcon-titles"></text>客户列表
+  </view>
+  <view class="margin-top bg-white padding radius-lg" wx:for="{{patients}}" wx:key="index">
+    <text class="bg-{{item.timeDes?'main':'grey'}} radius-lg padding-lr-xs">{{item.timeDes?'已预约':'未预约'}}</text>
+    <view class="flex margin-top">
+      <image class="margin-right-sm" style="width: 100rpx;height: 100rpx;" src="/images/head.png"></image>
+      <view class="flex-sub flex align-center">
+        <view class="flex-sub">
+          <text>{{item.name}}</text>
+          <view class="flex margin-top-xs">
+            <image src="/images/phone.png" style="width: 30rpx;height: 30rpx;"></image>
+            <text class="margin-left-xs flex-sub">{{item.phone}}</text>
+          </view>
+          <view class="flex margin-top-xs">
+            <image src="/images/position.png" style="width: 30rpx;height: 30rpx;"></image>
+            <view class="margin-left-xs flex-sub">{{item.address}}</view>
+          </view>
+        </view>
+        <view class="bg-main padding-lr round padding-tb-xs margin-left-xs" bindtap="toUrl" data-url="/pages/patient/detail?id={{item.id}}">康复训练</view>
+      </view>
+    </view>
+  </view>
+</view>

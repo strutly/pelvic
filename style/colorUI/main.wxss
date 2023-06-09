@@ -13,7 +13,7 @@ page {
 	/* Color 可以自定义相关配色 */
 	/* var属性兼容性 --> https://www.caniuse.com/#feat=css-variables */
   /* 标准色 */
-  --main:#41b592;
+  --main:#82318e;
 	--red: #e54d42;
 	--orange: #f37b1d;
 	--yellow: #fbbd08;
@@ -313,6 +313,19 @@ radio.radio[checked]::after {
 .switch-sex[checked] .wx-switch-input {
 	background: var(--blue) !important;
 	border-color: var(--blue) !important;
+}
+
+switch.main[checked] .wx-switch-input,
+checkbox.main[checked] .wx-checkbox-input,
+radio.main[checked] .wx-radio-input {
+	border-color: var(--main) !important;
+}
+
+switch.main[checked] .wx-switch-input.wx-switch-input-checked,
+checkbox.main[checked] .wx-checkbox-input,
+radio.main[checked] .wx-radio-input {
+	background-color: var(--main) !important;
+	color: var(--white) !important;
 }
 
 switch.red[checked] .wx-switch-input,

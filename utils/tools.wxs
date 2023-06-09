@@ -1,15 +1,87 @@
-var emptyObject=function(obj){
-  return JSON.stringify(obj)=="{}"?true:false;
+var emptyObject = function (obj) {
+  return JSON.stringify(obj) == "{}" ? true : false;
 }
 
-var split = function(source,regex=","){
-  if(source){
+var split = function (source, regex = ",") {
+  if (source) {
     return source.split(regex);
   }
   return [];
 }
 
+var regYear = getRegExp("(y+)", "i");
+
+var dateFormat = function (timestamp, format = "yyyy-MM-dd hh:mm:ss") {
+  if (!timestamp) return "";
+  var reg = getRegExp("-", "g");
+  timestamp = timestamp.replace(reg, '/');
+  // 通过getDate()方法获取date类型的时间
+  var realDate = getDate(timestamp);
+  function timeFormat(num) {
+    return num < 10 ? '0' + num : num;
+  }
+  var date = [
+    ["M+", timeFormat(realDate.getMonth() + 1)],
+    ["d+", timeFormat(realDate.getDate())],
+    ["h+", timeFormat(realDate.getHours())],
+    ["m+", timeFormat(realDate.getMinutes())],
+    ["s+", timeFormat(realDate.getSeconds())],
+    ["q+", Math.floor((realDate.getMonth() + 3) / 3)],
+    ["S+", realDate.getMilliseconds()],
+  ];
+  var reg1 = regYear.exec(format);
+  // console.log(reg1[0]);
+  if (reg1) {
+
+    format = format.replace(reg1[1], (realDate.getFullYear() + '').substring(4 - reg1[1].length));
+  }
+  for (var i = 0; i < date.length; i++) {
+    var k = date[i][0];
+    var v = date[i][1];
+    // getRegExp初始化一个正则表达式对象
+    var reg2 = getRegExp("(" + k + ")").exec(format);
+    if (reg2) {
+      format = format.replace(reg2[1], reg2[1].length == 1
+        ? v : ("00" + v).substring(("" + v).length));
+    }
+  }
+  return format;
+}
+var appointmentTime = function(time){
+  if (time == 9) return "9:00~12:00";
+  if (time == 12) return "12:00~14:00";
+  return "14:00~18:00";
+}
+var appointmentColor = function(time){
+  if (time == 9) return "#3A7BF1";
+  if (time == 12) return "#F59A23";
+  return "#00BFBF";
+}
+/* 向下取整时 0 天实际是明天*/
+var diffDay = function(day){
+  var diffDate;
+  var myDate_1 = getDate(day);
+  var myDate_2 = getDate();
+  // 将两个日期都转换为毫秒格式，然后做差
+  diffDate = Math.abs(myDate_1 - myDate_2); // 取相差毫秒数的绝对值
+ 
+  return Math.floor(diffDate / (1000 * 3600 * 24)); // 向下取整
+}
+
+var planDay = function(day){
+  var diff = diffDay(day);
+  if(diff==0) return "明天";
+  if(diff==1) return "后天";
+  return day;
+}
+
+
 module.exports = {
   emptyObject: emptyObject,
-  split:split
+  split: split,
+  dateFormat: dateFormat,
+  appointmentTime:appointmentTime,
+  appointmentColor:appointmentColor,
+  planDay:planDay,
+  diffDay:diffDay
 }

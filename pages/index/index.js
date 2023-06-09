@@ -4,7 +4,8 @@ import Api from '../../config/api';
 import CustomPage from '../../CustomPage';
 CustomPage({
   data: {
-    authModal: true
+    authModal: true,
+    datas:{}
   },
   
   onLoad() {
@@ -16,7 +17,7 @@ CustomPage({
       let res = await Api.homeData();
       console.log(res);      
       that.setData({
-        datas: res.data
+        datas: res.data||{}
       })
     } catch (error) {
       console.log(error)
@@ -89,4 +90,12 @@ CustomPage({
       that.showTips('您已拒绝授权获取手机号~')
     }
   },
+  toWork(){
+    let datas = that.data.datas;
+    console.log(datas['id'])
+    if(!datas['id']) return that.showToast("暂无工作中的服务");
+    wx.navigateTo({
+      url: `/pages/serve/task?id=${datas.id}`
+    })
+  }
 })

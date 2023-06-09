@@ -12,7 +12,6 @@ const CustomPage = function (page) {
         this.onLoad(this.data.options)
       },
       onReady(){
-        console.log(2)
         this.setData({
           userInfo:wx.getStorageSync('userInfo')
         })

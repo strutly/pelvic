@@ -1,0 +1,21 @@
+page{
+  background-color: var(--main);
+}
+
+.grid-container {
+  display:grid;
+  grid-column-gap:30rpx;
+  grid-row-gap: 20rpx;
+  grid-template-columns: auto auto auto;
+  
+}
+
+.grid-item {
+  color:var(--main);
+  text-align: center;
+  border:2rpx solid var(--main);
+}
+.grid-item-active{
+  background-color: var(--main);
+  color:var(--white);
+}

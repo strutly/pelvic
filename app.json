@@ -1,12 +1,22 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/serve/task",
     "pages/index/my",
+    "pages/appointment/list",
+    "pages/patient/detail",
+    "pages/serve/task",
+    "pages/homework/add",
     "pages/serve/list",
-    "pages/serve/plan",
     "pages/serve/detail",
-    "pages/index/voiceprint"
+    "pages/patient/files",
+    "pages/summary/add",
+    "pages/assess/add",
+    "pages/patient/list",
+    "pages/homework/list",
+    "pages/summary/list",
+    "pages/summary/detail",
+    "pages/homework/detail",
+    "pages/appointment/plan"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -17,16 +27,6 @@
   "usingComponents": {
     "topTips": "/components/tips/index"
   },
-  "tabBar": {
-    "custom": true,
-    "list": [
-      {
-        "pagePath": "pages/index/index"
-      },
-      {
-        "pagePath": "pages/index/my"
-      }
-    ]
-  },
+  
   "sitemapLocation": "sitemap.json"
 }

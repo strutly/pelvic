@@ -1,36 +1,51 @@
-<view class="bg-gray radius padding margin">
+<view class="bg-main radius-xl padding margin">
   <view class="flex align-center">
-    <image src="{{statics.pic?domain+'/'+statics.pic:'/images/headimg.png'}}" class="cu-avatar round lg"></image>
-    <view class="text-grey margin-left">{{statics.name}}</view>
-    <view class="flex-sub text-right" bindtap="toUrl" data-url="/pages/index/voiceprint"><text class="cuIcon-sound"></text>声音锁</view>
-  </view>
-  <view class="flex margin-top-xl">
-    <view class="flex-sub">服务次数({{statics.times}}次)</view>
-    <view>服务人数({{statics.sum}}人)</view>
-  </view>
-</view>
-<view class="padding-lr padding-bottom solid-bottom">
-  历史服务
-</view>
-<view class="cu-list menu  footer-btns">
-  <view class="cu-item arrow" wx:for="{{setmealServices}}" wx:key="index" bindtap="toUrl" data-url="/pages/serve/detail?id={{item.id}}">
-    <view class="content">
-      {{item.title}}
-    </view>
-    <view class="action">
-      <text class="text-grey text-sm">{{item.endTime}}</text>
-    </view>
-  </view>
+    <image src="{{statics.pic?domain+statics.pic:'/images/head.png'}}" class="cu-avatar round lg"></image>
+    <view class="text-white margin-left">{{statics.name||"照护师"}}</view>
 
-  <view class="padding-xs flex align-center" wx:if="{{setmealServices.length==0}}">
-    <view class="flex-sub text-center">
-      <view class="text-xsl padding">
-        <text class="cuIcon-info text-main"></text>
-      </view>
-      <view class="padding">历史服务暂无</view>
+  </view>
+  <view class="flex margin-top-xl text-center align-center">
+    <view class="flex-sub margin-right-xl">
+      <view>{{statics.times||0}}</view>
+      <view>服务次数</view>
+    </view>
+    <text class="cuIcon-titles"></text>
+    <view class="flex-sub margin-left-xl">
+      <view>{{statics.sum||0}}</view>
+      <view>服务人数</view>
     </view>
   </view>
 </view>
 
+<view class="flex text-center margin-top padding">
+  <view class="flex-sub" bindtap="toUrl" data-url="/pages/patient/list">
+    <image style="width: 120rpx; height: 120rpx;" src="/images/custom.png"></image>
+    <view>客户管理</view>
+  </view>
+  <view class="flex-sub" bindtap="toUrl" data-url="/pages/summary/list">
+    <image style="width: 120rpx; height: 120rpx;" src="/images/summarize.png"></image>
+    <view>康复小结</view>
+  </view>
+  <view class="flex-sub" bindtap="toUrl" data-url="/pages/homework/list">
+    <image style="width: 120rpx; height: 120rpx;" src="/images/homework.png"></image>
+    <view>作业布置</view>
+  </view>
 
-<tabBar selected="1"></tabBar>
+</view>
+
+
+<view class="flex text-center bg-white shadow tabbar">  
+  <view class="flex-sub" bindtap="toWork">
+    <view class='cuIcon-cu-image padding-top-sm'>
+      <image  src="/images/pelvic.png"></image>
+    </view>
+    <view class="footer-des text-gray">工作台</view>
+  </view>
+
+  <view class="flex-sub">
+    <view class='cuIcon-cu-image padding-top-sm'>
+      <image  src="/images/tab1-1.png"></image>
+    </view>
+    <view class="footer-des text-black">个人中心</view>
+  </view>
+</view>

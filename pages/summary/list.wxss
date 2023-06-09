@@ -1,0 +1,14 @@
+page {
+  background-color: var(--main);
+}
+
+.tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0px;
+  height: 0px;
+  border: 20rpx solid var(--red);
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}

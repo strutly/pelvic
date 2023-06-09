@@ -1,0 +1,6 @@
+page{
+  background-color: var(--main);
+}
+.cu-form-group .title{
+  min-width: 35%;
+}

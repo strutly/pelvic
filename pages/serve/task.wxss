@@ -1,9 +1,6 @@
-page{
-  background-color: var(--white);
-}
-.round-border{
-  border:30rpx solid var(--greenLight);
-  width:180rpx;
-  height: 180rpx;
-  line-height: 120rpx;
+page {
+  background-color: var(--main);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
