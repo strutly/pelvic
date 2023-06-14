@@ -99,7 +99,8 @@ image {
 }
 
 .radius-xl {
-	border-radius: 16rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
 }
 
 /* ==================

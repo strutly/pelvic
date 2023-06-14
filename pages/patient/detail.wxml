@@ -27,9 +27,11 @@
         </view>
         <view class="text-gray margin-top-sm">服务次数:(总次数:{{item.sumTimes}}/已使用:{{item.useTimes}})</view>
       </view>
-      <view class="bg-main radius-xl padding-xs padding-lr" bindtap="serve" data-patient-id="{{options.id}}" data-setmeal-record-id="{{item.id}}">康复训练</view>
+      <view class="bg-main radius-xl padding-xs padding-lr" bindtap="serve" data-patient-id="{{options.id}}" data-setmeal-record-id="{{item.id}}">{{item.des}}</view>
     </view>
-
+    <view wx:if="{{patient.records.length==0}}">
+      <text class="cuIcon-info"></text> 暂未购买任何套餐
+    </view>
   </view>
 
 

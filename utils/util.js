@@ -36,7 +36,6 @@ const serveTime = startTime => {
 const groupBy = (list, key) => {
   let map = {};
   list.forEach((item, index, arr) => {
-    console.log(item[key])
     if (!map[item[key]]) {
       map[item[key]] = arr.filter(a => a[key] == item[key]);
     }
@@ -44,7 +43,6 @@ const groupBy = (list, key) => {
   return map;
 }
 var format = function (date, fmt) {
-  console.log(date);
 	var o = {
     "M+": date.getMonth() + 1, //月份
     "d+": date.getDate(), //日

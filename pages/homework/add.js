@@ -9,13 +9,48 @@ CustomPage({
     homeWorks: [],
     missions: {},
     mask: false,
+    multiIndex: ['', ''],
+    multiArray: [[], []],
     timeList: Util.timeList()
   },
-
   onLoad(options) {
     that = this;
   },
-
+  bindMultiPickerChange(e) {
+    console.log('picker发送选择改变，携带值为', e);
+    let index = e.currentTarget.dataset.index;
+    let homeWorks = that.data.homeWorks;
+    let multiArray = that.data.multiArray;
+    let missions = that.data.missions;
+    let value = e.detail.value;
+    let parent = multiArray[0][value[0]];
+    let title = multiArray[1][value[1]];
+    let mission = missions[parent].find(item => item.name == title);
+    homeWorks[index] = {
+      ...homeWorks[index],
+      id: mission.id,
+      description: mission.description,
+      title: mission.name,
+    }
+    that.setData({
+      homeWorks:homeWorks
+    })
+  },
+  bindMultiPickerColumnChange(e) {
+    console.log(e);
+    let detail = e.detail;
+    let multiArray = that.data.multiArray;
+    let missions = that.data.missions;
+    console.log()
+    if (detail.column === 0) {
+      multiArray[1] = missions[multiArray[0][detail.value]].map(item => item.name);
+      console.log(multiArray);
+      that.setData({
+        multiArray: multiArray,
+        multiIndex: [detail.value, 0],
+      })
+    }
+  },
   onReady() {
     App.watch(function (value) {
       console.log("onReady", value);
@@ -29,10 +64,14 @@ CustomPage({
 
         Api.missionGroupBy().then(res => {
           console.log(res);
+          let missions = res.data;
+          let multiArray = [[], []];
+          multiArray[0] = Object.keys(missions);
+          multiArray[1] = missions[multiArray[0][0]].map(item => item.name);
           that.setData({
-            missions: res.data
+            missions: missions,
+            multiArray: multiArray,
           })
-
         })
       }
     })
@@ -64,7 +103,7 @@ CustomPage({
       })
     }, 300);
   },
-  textareaChange(e){
+  textareaChange(e) {
     console.log(e);
     let homeWorks = that.data.homeWorks;
     let dataset = e.currentTarget.dataset;
@@ -134,22 +173,22 @@ CustomPage({
   async submit() {
     if (that.checkForm()) {
       let homeWorks = that.data.homeWorks;
-      homeWorks = homeWorks.map(item=>{
-        let times = item.timeList.filter(time=>time.checked).map(time=>time.time);
+      homeWorks = homeWorks.map(item => {
+        let times = item.timeList.filter(time => time.checked).map(time => time.time);
         return {
-          mid:item.id,
-          demand:item.description,
-          times:times
+          mid: item.id,
+          demand: item.description,
+          times: times
         }
       });
       let res = await Api.homeWorkAdd({
-        serviceRecordId:that.data.options.id,
-        homeWorks:homeWorks
+        serviceRecordId: that.data.options.id,
+        homeWorks: homeWorks
       });
       console.log(res);
-      if(res.code==0){
+      if (res.code == 0) {
         wx.navigateBack();
-      }else{
+      } else {
         that.showTips(res.msg);
       }
     }

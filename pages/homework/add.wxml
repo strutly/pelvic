@@ -29,21 +29,16 @@
     </view>
     <view class="cu-form-group">
       <view class="title">作业内容</view>
-      <view class="flex-sub" style="position: relative;">
-        <input data-index="{{index}}" value="{{item.title}}" bindinput="inputChange" class="" placeholder="作业内容"></input>
-        <view catchtouchmove="true" style="position:absolute;top:100%;left:0;right:0;z-index:1;" class="bg-yellow padding-sm" wx:if="{{item.missions && mask}}">
-          <view catchtap="checkMission" data-title="{{mission.name}}" data-des="{{mission.description}}" data-id="{{mission.id}}" data-j="{{index}}" data-k="{{k}}" wx:for-index="k" class="padding-sm bg-white" wx:for="{{item.missions}}" wx:for-item="mission" wx:key="k" wx:if="{{k<5}}">{{mission.missionType.name+'-'+mission.name}}</view>
-        </view>
-      </view>
+      <picker data-index="{{index}}" mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">{{item.id!=''?item.title:'请选择作业'}}</picker>
     </view>
     <view class="cu-form-group align-start">
       <view class="title">作业要求</view>
-      <textarea bindblur="textareaChange" data-index="{{index}}" data-k="{{k}}"  disabled="{{mask}}" class="radius-xl bg-gray" maxlength="-1" value="{{item.description}}" placeholder="作业要求"></textarea>
+      <textarea bindblur="textareaChange" data-index="{{index}}" data-k="{{k}}" disabled="{{mask}}" class="radius-xl bg-gray" maxlength="-1" value="{{item.description}}" placeholder="作业要求"></textarea>
     </view>
     <view class="cu-form-group">
       <view class="title">完成时间</view>
       <view class="flex-sub grid-container margin-top-sm">
-        <view bindtap="timeCheck" data-j="{{index}}" data-k="{{k}}" wx:for-index="k" class="grid-item {{day.checked?'grid-item-active':''}}" wx:for="{{item.timeList}}" wx:for-item="day" >{{day.showTime}}</view>
+        <view bindtap="timeCheck" data-j="{{index}}" data-k="{{k}}" wx:for-index="k" class="padding-xs grid-item text-sm {{day.checked?'grid-item-active':''}}" wx:for="{{item.timeList}}" wx:for-item="day">{{day.showTime}}</view>
       </view>
     </view>
   </view>

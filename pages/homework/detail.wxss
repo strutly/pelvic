@@ -1,1 +1,3 @@
-/* pages/homework/detail.wxss */
+page{
+  background-color: var(--main);
+}

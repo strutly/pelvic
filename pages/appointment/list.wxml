@@ -33,7 +33,7 @@
     <text class="cuIcon-titles"></text>客户列表
   </view>
   <view class="margin-top bg-white padding radius-lg" wx:for="{{patients}}" wx:key="index">
-    <text class="bg-{{item.timeDes?'main':'grey'}} radius-lg padding-lr-xs">{{item.timeDes?'已预约':'未预约'}}</text>
+    <text class="bg-{{item.timeDes?'main':'grey'}} radius-lg padding-lr-xs">{{item.timeDes?item.timeDes:'未预约'}}</text>
     <view class="flex margin-top">
       <image class="margin-right-sm" style="width: 100rpx;height: 100rpx;" src="/images/head.png"></image>
       <view class="flex-sub flex align-center">

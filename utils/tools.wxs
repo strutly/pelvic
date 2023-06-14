@@ -57,15 +57,12 @@ var appointmentColor = function(time){
   if (time == 12) return "#F59A23";
   return "#00BFBF";
 }
-/* 向下取整时 0 天实际是明天*/
 var diffDay = function(day){
   var diffDate;
   var myDate_1 = getDate(day);
   var myDate_2 = getDate();
-  // 将两个日期都转换为毫秒格式，然后做差
-  diffDate = Math.abs(myDate_1 - myDate_2); // 取相差毫秒数的绝对值
- 
-  return Math.floor(diffDate / (1000 * 3600 * 24)); // 向下取整
+  diffDate = myDate_1 - myDate_2;
+  return Math.ceil(diffDate / (1000 * 3600 * 24)); 
 }
 
 var planDay = function(day){

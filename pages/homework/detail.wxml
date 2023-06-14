@@ -1,2 +1,20 @@
-<!--pages/homework/detail.wxml-->
-<text>pages/homework/detail.wxml</text>
+<wxs module="Tools" src="/utils/tools.wxs"></wxs>
+<view class="padding flex flex-direction">
+  <block wx:for="{{homeWork}}" wx:for-item="value" wx:for-index="key" wx:key="key">
+    <view class="bg-white margin-bottom radius-xl" style="order:{{Tools.diffDay(key)}};">
+      <view class="flex padding solid-bottom">
+        <view class="flex-sub">
+          <text class="cuIcon-titles"></text>
+          <text class="margin-left-xs">{{key}}</text>
+        </view>
+        <view>{{value.length}}个</view>
+      </view>
+      <view class="flex padding solid-bottom" wx:for="{{value}}" wx:key="key">
+        <view class="flex-sub">
+          {{item.mission.name}}
+        </view>
+        <text class="text-main">{{item.status==0?'待完成':'已完成'}}</text>
+      </view>
+    </view>
+  </block>
+</view>
