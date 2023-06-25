@@ -27,6 +27,16 @@
   "usingComponents": {
     "topTips": "/components/tips/index"
   },
-  
+  "tabBar": { 
+    "custom": true, 
+    "list": [ 
+      { 
+        "pagePath": "pages/index/index" 
+      }, 
+      { 
+        "pagePath": "pages/index/my" 
+      } 
+    ] 
+  }, 
   "sitemapLocation": "sitemap.json"
 }

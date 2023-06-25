@@ -1,7 +1,7 @@
 <view class="flex text-center bg-white shadow tabbar">  
   <view class="flex-sub" bindtap="switch" data-url="/pages/index/index">
     <view class='cuIcon-cu-image padding-top-sm'>
-      <image  src="{{selected==0?'/images/pelvic.png':'/images/tab0-0.png'}}"></image>
+      <image  src="{{selected==0?'/images/pelvic.png':'/images/pelvic.png'}}"></image>
     </view>
     <view class="footer-des {{selected==0?'text-black':'text-gray'}}">工作台</view>
   </view>

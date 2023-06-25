@@ -34,18 +34,4 @@
 </view>
 
 
-<view class="flex text-center bg-white shadow tabbar">  
-  <view class="flex-sub" bindtap="toWork">
-    <view class='cuIcon-cu-image padding-top-sm'>
-      <image  src="/images/pelvic.png"></image>
-    </view>
-    <view class="footer-des text-gray">工作台</view>
-  </view>
-
-  <view class="flex-sub">
-    <view class='cuIcon-cu-image padding-top-sm'>
-      <image  src="/images/tab1-1.png"></image>
-    </view>
-    <view class="footer-des text-black">个人中心</view>
-  </view>
-</view>
+<tabBar selected="1"></tabBar> 

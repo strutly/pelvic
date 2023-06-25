@@ -198,62 +198,43 @@
     <text class="cuIcon-titles"></text>盆底肌评估
   </view>
   <view class="bg-white radius-xl margin-top">
-
     <view class="flex padding align-end solid-bottom">
       <view class="margin-right">
-        <view>二类肌</view>
-        <text class="text-sm text-gray">快肌纤维最大收缩力</text>
+        <view>二类肌肌力(PⅡ)</view>
+        <text class="text-sm text-gray">快肌纤维最大收缩力 (参考值>30.0)</text>
       </view>
-      <input data-type="pic" placeholder="请输入" data-check="有" bindblur="inputChange" value="{{formData['二类肌-快肌纤维最大收缩力']['des']}}" data-des="{val}" data-parent="盆底肌评估" data-title="二类肌-快肌纤维最大收缩力" class="text-right flex-sub solid-bottom"></input>
-
-
-
-      <view class="text-xxl margin-left" bindtap="addImg" data-parent="盆底肌评估" data-title="二类肌-快肌纤维最大收缩力">
-        <image data-type="pic" style="width: 60rpx;height: 60rpx;" src="{{formData['二类肌-快肌纤维最大收缩力']['pic']}}" wx:if="{{formData['二类肌-快肌纤维最大收缩力']['pic']}}"></image>
-        <view style="width: 60rpx;height: 60rpx;" class="text-xxl solids text-center flex align-center justify-center" wx:else>+</view>
-      </view>
-
+      <input type="digit" data-type="input" placeholder="请输入" data-check="有" bindblur="inputChange" value="{{formData['二类肌肌力(PⅡ)']['des']}}" data-des="{val}" data-parent="盆底肌评估" data-title="二类肌肌力(PⅡ)" class="text-right flex-sub solid-bottom"></input>
     </view>
     <view class="flex padding align-end solid-bottom">
       <view class="margin-right">
-        <view>二类肌</view>
-        <text class="text-sm text-gray">快肌纤维募集时间</text>
+        <view>一类肌肌力(P I)</view>
+        <text class="text-sm text-gray">快肌纤维最大收缩力 (参考值>30.0)</text>
       </view>
-      <input data-type="pic" placeholder="请输入" data-check="有" bindblur="inputChange" value="{{formData['二类肌-快肌纤维募集时间']['des']}}" data-des="{val}" data-parent="盆底肌评估" data-title="二类肌-快肌纤维募集时间" class="text-right flex-sub solid-bottom"></input>
-
-      <view class="text-xxl margin-left" bindtap="addImg" data-parent="盆底肌评估" data-title="二类肌-快肌纤维募集时间">
-        <image data-type="pic" style="width: 60rpx;height: 60rpx;" src="{{formData['二类肌-快肌纤维募集时间']['pic']}}" wx:if="{{formData['二类肌-快肌纤维募集时间']['pic']}}"></image>
-        <view style="width: 60rpx;height: 60rpx;" class="text-xxl solids text-center flex align-center justify-center" wx:else>+</view>
-      </view>
-
-
+      <input type="digit" data-type="input" placeholder="请输入" data-check="有" bindblur="inputChange" value="{{formData['一类肌肌力(P I)']['des']}}" data-des="{val}" data-parent="盆底肌评估" data-title="一类肌肌力(P I)" class="text-right flex-sub solid-bottom"></input>
     </view>
     <view class="flex padding align-end solid-bottom">
       <view class="margin-right">
-        <view>一类肌</view>
-        <text class="text-sm text-gray">慢肌纤维平均收缩力</text>
+        <view>募集时间</view>
+        <text class="text-sm text-gray">(参考值{{'<'}} 0.5)</text>
       </view>
-      <input data-type="pic" placeholder="请输入" data-check="有" bindblur="inputChange" value="{{formData['一类肌-慢肌纤维平均收缩力']['des']}}" data-des="{val}" data-parent="盆底肌评估" data-title="一类肌-慢肌纤维平均收缩力" class="text-right flex-sub solid-bottom"></input>
-
-      <view class="text-xxl margin-left" bindtap="addImg" data-parent="盆底肌评估" data-title="一类肌-慢肌纤维平均收缩力">
-        <image data-type="pic" style="width: 60rpx;height: 60rpx;" src="{{formData['一类肌-慢肌纤维平均收缩力']['pic']}}" wx:if="{{formData['一类肌-慢肌纤维平均收缩力']['pic']}}"></image>
-        <view style="width: 60rpx;height: 60rpx;" class="text-xxl solids text-center flex align-center justify-center" wx:else>+</view>
-      </view>
-
-
+      <input type="digit" data-type="input" placeholder="请输入" data-check="有" bindblur="inputChange" value="{{formData['募集时间']['des']}}" data-des="{val}" data-parent="盆底肌评估" data-title="募集时间" class="text-right flex-sub solid-bottom"></input>
     </view>
     <view class="flex padding align-end solid-bottom">
       <view class="margin-right">
-        <view>一类肌</view>
-        <text class="text-sm text-gray">疲劳度</text>
+        <view>疲劳度</view>
+        <text class="text-sm text-gray">(参考值2-20.0)</text>
       </view>
-      <input data-type="pic" placeholder="请输入" data-check="有" bindblur="inputChange" value="{{formData['一类肌-疲劳度']['des']}}" data-des="{val}" data-parent="盆底肌评估" data-title="一类肌-疲劳度" class="text-right flex-sub solid-bottom"></input>
-
-      <view class="text-xxl margin-left" bindtap="addImg" data-parent="盆底肌评估" data-title="一类肌-疲劳度">
-        <image data-type="pic" style="width: 60rpx;height: 60rpx;" src="{{formData['一类肌-疲劳度']['pic']}}" wx:if="{{formData['一类肌-疲劳度']['pic']}}"></image>
-        <view style="width: 60rpx;height: 60rpx;" class="text-xxl solids text-center flex align-center justify-center" wx:else>+</view>
-      </view>
+      <input type="text" data-type="input" placeholder="请输入" data-check="有" bindblur="inputChange" value="{{formData['疲劳度']['des']}}" data-des="{val}" data-parent="盆底肌评估" data-title="疲劳度" class="text-right flex-sub solid-bottom"></input>
     </view>
+    <view class="flex padding align-center solid-bottom">
+      <view class="flex-sub">报告</view>
+      <view class="text-xxl margin-left" bindtap="addImg" data-parent="盆底肌评估" data-title="报告" data-type="pic"> 
+        <image data-type="pic" style="width: 60rpx;height: 60rpx;" src="{{formData['报告']['pic']}}" wx:if="{{formData['报告']['pic']}}"></image> 
+        <view style="width: 60rpx;height: 60rpx;" class="text-xxl solids text-center flex align-center justify-center" wx:else>+</view> 
+        </view>
+    </view>
+
+
     <view class="padding-bottom flex text-center" bindtap="submit">
       <view class="padding-tb-sm bg-main flex-sub margin radius-xl" >提交</view>
     </view>

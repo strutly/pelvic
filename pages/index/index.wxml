@@ -60,21 +60,7 @@
 </view>
 
 
-<view class="flex text-center bg-white shadow tabbar">  
-  <view class="flex-sub" bindtap="toWork">
-    <view class='cuIcon-cu-image padding-top-sm'>
-      <image  src="/images/pelvic.png"></image>
-    </view>
-    <view class="footer-des text-black">工作台</view>
-  </view>
-
-  <view class="flex-sub" bindtap="toUrl"  data-url="/pages/index/my">
-    <view class='cuIcon-cu-image padding-top-sm'>
-      <image  src="/images/tab1-0.jpg"></image>
-    </view>
-    <view class="footer-des text-gray">个人中心</view>
-  </view>
-</view>
+<tabBar selected="0"></tabBar> 
 
 <view class="cu-modal show" wx:if="{{modalauth}}">
   <view class="cu-dialog sm">
