@@ -4,20 +4,20 @@ import CustomPage from '../../CustomPage';
 CustomPage({
 
   data: {
-    domain:Api.domain,
+    domain: Api.domain,
     statics: {},
     setmealServices: [],
-    datas:{}
+    datas: {}
   },
 
   onLoad(options) {
     that = this;
-    
+
   },
 
-  onShow(){
+  onShow() {
     console.log("show");
-    
+
     getApp().watch(function (value) {
       console.log(value)
       if (value.login && value.auth) {
@@ -26,36 +26,35 @@ CustomPage({
       }
     })
   },
-  async getHomeData() {
+  getHomeData() {
     console.log("homedata")
-    try {
-      let res = await Api.homeData();
-      console.log(res);      
+
+    Api.homeData().then(res => {
       that.setData({
-        datas: res.data||{}
+        datas: res.data || {}
       })
-    } catch (error) {
-      console.log(error)
-    }
+    }, err => {
+      console.log(err);
+    });
+
   },
-  async caregiverStatics() {
-    try {
-      let res = await Api.caregiverStatics();
+  async caregiverStatics() {    
+    Api.caregiverStatics().then(res => {
       that.setData({
         statics: res.data
       })
-    } catch (error) {
-      console.log(error)
-    }
+    }, err => {
+      console.log(err);
+    });
   },
-  toWork(){
+  toWork() {
     let datas = that.data.datas;
     console.log(datas['id'])
-    if(!datas['id']) return that.showToast("暂无工作中的服务");
+    if (!datas['id']) return that.showToast("暂无工作中的服务");
     wx.navigateTo({
       url: `/pages/serve/task?id=${datas.id}`
     })
   }
-  
+
 
 })

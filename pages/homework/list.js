@@ -20,26 +20,22 @@ CustomPage({
       }
     })
   },
-  async getHomeWorkPage(pageNum, name) {
-    try {
-      let res = await Api.homeWorkPage({
+  getHomeWorkPage(pageNum, name) {
+    Api.homeWorkPage({
+      pageNum: pageNum,
+      pageSize: 10,
+      name: name
+    }).then(res => {
+      let homeWorks = that.data.homeWork || [];
+      that.setData({
+        homeWorks: homeWorks.concat(res.data.content),
+        endline: res.data.last,
         pageNum: pageNum,
-        pageSize: 10,
         name: name
-      });
-      console.log(res);
-      if (res.code == 0) {
-        let homeWorks = that.data.homeWork || [];
-        that.setData({
-          homeWorks: homeWorks.concat(res.data.content),
-          endline: res.data.last,
-          pageNum: pageNum,
-          name: name
-        })
-      }
-    } catch (error) {
-      console.log(error)
-    }
+      })
+    }, err => {
+      that.showTips(err.msg);
+    });
   },
   onReachBottom() {
     let endline = that.data.endline;

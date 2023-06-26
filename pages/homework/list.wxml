@@ -1,3 +1,4 @@
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
 <view class="padding">
   <view class="cu-list menu radis-xl sm-border">
     <view class="cu-item" wx:for="{{homeWorks}}" wx:key="index" bindtap="toUrl" data-url="/pages/homework/{{item.status?'detail':'add'}}?id={{item.id}}">

@@ -33,7 +33,7 @@ CustomPage({
       title: mission.name,
     }
     that.setData({
-      homeWorks:homeWorks
+      homeWorks: homeWorks
     })
   },
   bindMultiPickerColumnChange(e) {
@@ -170,7 +170,7 @@ CustomPage({
     }
     return true;
   },
-  async submit() {
+  submit() {
     if (that.checkForm()) {
       let homeWorks = that.data.homeWorks;
       homeWorks = homeWorks.map(item => {
@@ -181,16 +181,14 @@ CustomPage({
           times: times
         }
       });
-      let res = await Api.homeWorkAdd({
+      Api.homeWorkAdd({
         serviceRecordId: that.data.options.id,
         homeWorks: homeWorks
-      });
-      console.log(res);
-      if (res.code == 0) {
+      }).then(res => {
         wx.navigateBack();
-      } else {
-        that.showTips(res.msg);
-      }
+      }, err => {
+        that.showTips(err.msg);
+      });
     }
   }
 

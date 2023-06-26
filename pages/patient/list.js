@@ -11,32 +11,29 @@ CustomPage({
   },
   onReady() {
     App.watch(function (value) {
-      console.log("ready",value);
+      console.log("ready", value);
       if (value.login && value.auth) {
         that.getPatientPage(1, '');
       }
     })
   },
-  async getPatientPage(pageNum, name) {
-    try {
-      let res = await Api.patientPage({
+  getPatientPage(pageNum, name) {
+    Api.patientPage({
+      pageNum: pageNum,
+      pageSize: 10,
+      name: name
+    }).then(res => {
+      let patients = that.data.patients || [];
+      that.setData({
+        patients: patients.concat(res.data.content),
+        endline: res.data.last,
         pageNum: pageNum,
-        pageSize: 10,
         name: name
-      });
-      console.log(res);
-      if (res.code == 0) {
-        let patients = that.data.patients || [];
-        that.setData({
-          patients: patients.concat(res.data.content),
-          endline: res.data.last,
-          pageNum: pageNum,
-          name: name
-        })
-      }
-    } catch (error) {
-      console.log(error)
-    }
+      })
+    }, err => {
+      console.log(err);
+    });
+
   },
   onReachBottom() {
     let endline = that.data.endline;
@@ -54,5 +51,5 @@ CustomPage({
     })
     that.getPatientPage(1, name);
   },
-  
+
 })

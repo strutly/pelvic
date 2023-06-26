@@ -1,7 +1,7 @@
 <topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
 <view class="padding">
   
-  <view class="padding text-center bg-grey radius-xl margin-bottom" wx:if="{{datas.id}}">您有项目正在服务中,请点击:<text class="text-yellow" bindtap="toUrl" data-url="/pages/serve/task?id={{datas.id}}">继续</text></view>
+  <view class="padding text-center bg-grey radius-xl margin-bottom" wx:if="{{datas.id}}">您有项目正在服务中,请点击:<text class="text-yellow" bindtap="toUrl" data-url="/pages/serve/task?id={{datas.setmealRecordId}}">继续</text></view>
 
   <image class="banner" src="/images/banner.png" mode="widthFix"></image>
 

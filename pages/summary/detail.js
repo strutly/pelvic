@@ -30,6 +30,8 @@ CustomPage({
           that.setData({
             record: record
           });
+        },err=>{
+          console.log(err);
         })
       }
     })

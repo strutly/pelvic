@@ -25,19 +25,16 @@ CustomPage({
 
     })
   },
-  onShow() {
-
-  },
   async serve(e) {
     console.log(e);
-    let res = await Api.serviceRecordAdd(e.currentTarget.dataset);
-    if (res.code == 0) {
+    let dataset = e.currentTarget.dataset;
+    Api.puerperalSetmealRecordDetail(e.currentTarget.dataset).then(res=>{
       wx.reLaunch({
-        url: '/pages/serve/task?id=' + res.data.id
+        url: '/pages/serve/task?id=' + dataset.id
       })
-    } else {
-      that.showTips(res.msg);
-    }
+    },err=>{
+      that.showTips(err.msg);      
+    });
   }
 
 })

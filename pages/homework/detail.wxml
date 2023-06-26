@@ -1,4 +1,5 @@
 <wxs module="Tools" src="/utils/tools.wxs"></wxs>
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
 <view class="padding flex flex-direction">
   <block wx:for="{{homeWork}}" wx:for-item="value" wx:for-index="key" wx:key="key">
     <view class="bg-white margin-bottom radius-xl" style="order:{{Tools.diffDay(key)}};">

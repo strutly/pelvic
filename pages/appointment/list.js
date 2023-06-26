@@ -11,7 +11,7 @@ CustomPage({
   },
   onReady() {
     App.watch(function (value) {
-      console.log("onReady",value);
+      console.log("onReady", value);
       if (value.login && value.auth) {
         that.getPatientPage(1, '');
       }
@@ -19,45 +19,37 @@ CustomPage({
   },
   onShow() {
     App.watch(function (value) {
-      console.log("show",value);
+      console.log("show", value);
       if (value.login && value.auth) {
         that.getAppointments();
       }
     })
   },
-  async getAppointments() {
-    try {
-      let res = await Api.appointmentList();
-      console.log(res);
-      if (res.code == 0) {
-        that.setData({
-          appointments: res.data
-        })
-      }
-    } catch (error) {
-      console.log(error);
-    }
+  getAppointments() {
+    Api.appointmentList().then(res => {
+      that.setData({
+        appointments: res.data
+      })
+    }, err => {
+      that.showTips(err.msg);
+    });
   },
-  async getPatientPage(pageNum, name) {
-    try {
-      let res = await Api.patientPage({
+  getPatientPage(pageNum, name) {
+    Api.patientPage({
+      pageNum: pageNum,
+      pageSize: 10,
+      name: name
+    }).then(res => {
+      let patients = that.data.patients || [];
+      that.setData({
+        patients: patients.concat(res.data.content),
+        endline: res.data.last,
         pageNum: pageNum,
-        pageSize: 10,
         name: name
-      });
-      console.log(res);
-      if (res.code == 0) {
-        let patients = that.data.patients || [];
-        that.setData({
-          patients: patients.concat(res.data.content),
-          endline: res.data.last,
-          pageNum: pageNum,
-          name: name
-        })
-      }
-    } catch (error) {
-      console.log(error)
-    }
+      })
+    }, err => {
+      that.showTips(err.msg);
+    });
   },
   onReachBottom() {
     let endline = that.data.endline;

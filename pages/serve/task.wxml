@@ -1,25 +1,24 @@
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
 <view class="padding-xl text-white radius-top flex align-center">
   <view class="flex-sub">
-    <view class="margin-top-sm">年龄:{{record.patient.age}}</view>
+    <view class="margin-top-sm">年龄:{{record.patient.age||"未知"}}</view>
     <view class="margin-top-sm">电话:{{record.patient.phone}}</view>
     <view class="margin-top-sm">地址:{{record.patient.address}}</view>
   </view>
   <image src="/images/head.png" style="width: 200rpx;height: 200rpx;"></image>
 </view>
 <view class="flex-sub flex justify-center flex-direction  bg-white radius-xl align-center">
-  <view class="text-main text-bold text-lg">{{record.setmeal.setmealName}} {{record.setmeal.useTimes}}/{{record.setmeal.sumTimes}}</view>
+  <view class="text-main text-bold text-lg">{{record.setmealName}} {{record.useTimes}}/{{record.sumTimes}}</view>
   <image class="margin-top" style="width: 200rpx;height: 200rpx;" src="/images/serve-start.png"></image>
   <view class="text-main margin-top">{{serveTime}}</view>
 
   <view style="margin-top:300rpx;width: 100vw;" class="flex align-center text-center">
-    <view bindtap="serveUpdate" data-type="startTime" style="width: 300rpx;margin:0 auto;" class="bg-main radius-xl padding-sm padding-lr-xl " wx:if="{{record.status==0}}">开始服务</view>
-    <view  bindtap="serveUpdate" data-type="endTime" style="width: 300rpx;margin:0 auto;" class="bg-main radius-xl padding-sm padding-lr-xl " wx:elif="{{record.status==1}}">结束服务</view>
+    <view bindtap="serveStart" data-type="startTime" style="width: 300rpx;margin:0 auto;" class="bg-main radius-xl padding-sm padding-lr-xl " wx:if="{{record.recordInfo.status==0}}">开始服务</view>
+    <view  bindtap="serveEnd" data-id="{{record.recordInfo.id}}" style="width: 300rpx;margin:0 auto;" class="bg-main radius-xl padding-sm padding-lr-xl " wx:elif="{{record.recordInfo.status==1}}">结束服务</view>
     <block wx:else>
-      <view bindtap="toUrl" data-url="/pages/summary/add?id={{options.id}}" style="width: 300rpx;margin:0 auto;" class="bg-main radius-xl padding-sm padding-lr-xl ">康复小结</view>
+      <view bindtap="toUrl" data-url="/pages/summary/add?id={{record.recordInfo.id}}" style="width: 300rpx;margin:0 auto;" class="bg-main radius-xl padding-sm padding-lr-xl ">康复小结</view>
       <view style="width: 300rpx;margin:0 auto;" class="bg-yellow radius-xl padding-sm padding-lr-xl " bindtap="toList">跳过</view>
     </block>
-
-
   </view>
 
 </view>

@@ -6,7 +6,7 @@ import CustomPage from '../../CustomPage';
 CustomPage({
 
   data: {
-    homeWork:{}
+    homeWork: {}
   },
 
   onLoad(options) {
@@ -18,13 +18,15 @@ CustomPage({
       console.log("onReady", value);
       if (value.login && value.auth) {
         Api.homeWorkDetail({
-          serviceRecordId:that.data.options.id
-        }).then(res=>{
+          serviceRecordId: that.data.options.id
+        }).then(res => {
           let homeworks = res.data;
-          let map = Util.groupBy(homeworks,'time');
+          let map = Util.groupBy(homeworks, 'time');
           that.setData({
-            homeWork:map
+            homeWork: map
           })
+        },err=>{
+          that.showTips(err.msg);
         })
 
 
@@ -32,5 +34,5 @@ CustomPage({
     })
   },
 
-  
+
 })

@@ -1,3 +1,4 @@
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
 <view class="padding">
   <view class="text-white text-lg">
     <text class="cuIcon-titles"></text>客户信息

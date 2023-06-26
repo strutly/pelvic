@@ -21,12 +21,14 @@ CustomPage({
       }
     })
   },
-  async getAppointmentPlan(){
-    let res = await Api.appointmentPlan();
-    console.log(res);
-    that.setData({
-      plan:res.data
-    })
+  getAppointmentPlan(){
+    Api.appointmentPlan().then(res=>{
+      that.setData({
+        plan:res.data
+      })
+    },err=>{
+      that.showTips(err.msg);
+    });    
   }
  
 })

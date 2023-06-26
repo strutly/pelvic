@@ -20,26 +20,23 @@ CustomPage({
       }
     })
   },
-  async getSummaryPage(pageNum, name) {
-    try {
-      let res = await Api.summaryPage({
+  getSummaryPage(pageNum, name) {
+    Api.summaryPage({
+      pageNum: pageNum,
+      pageSize: 10,
+      name: name
+    }).then(res => {
+      let summarys = [];
+      that.setData({
+        summarys: summarys.concat(res.data.content),
+        endline: res.data.last,
         pageNum: pageNum,
-        pageSize: 10,
         name: name
-      });
-      console.log(res);
-      if (res.code == 0) {
-        let summarys = [];
-        that.setData({
-          summarys: summarys.concat(res.data.content),
-          endline: res.data.last,
-          pageNum: pageNum,
-          name: name
-        })
-      }
-    } catch (error) {
-      console.log(error)
-    }
+      }, err => {
+        console.log(err);
+      })
+    });
+
   },
   onReachBottom() {
     let endline = that.data.endline;

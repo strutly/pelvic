@@ -90,16 +90,15 @@ CustomPage({
         count: 1,
         mediaType: "image",
       });
-
       console.log(fileRes)
-      let res = await Api.uploadFile(fileRes.tempFiles[0].tempFilePath);
-      console.log(res);
-      if (res.code == 0) {
+      Api.uploadFile(fileRes.tempFiles[0].tempFilePath).then(res=>{
         let imgList = that.data.imgList || []
         that.setData({
           imgList: imgList.concat(res.data)
         })
-      }
+      },err=>{
+        console.log(err);
+      });
     } catch (error) {
       console.log(error);
     }
@@ -118,15 +117,15 @@ CustomPage({
       ['modal' + name]: !that.data['modal' + name]
     })
   },
-  async submit(e) {
+  submit(e) {
     console.log(e);
     let trainCheckMap = that.data.trainCheckMap;
     try {
       console.log(Object.values(trainCheckMap))
       Object.values(trainCheckMap).forEach(list => {
-        list.forEach(item=>{
+        list.forEach(item => {
           console.log(item)
-          if(!item.value) throw new Error("请选择服务项"+item.name+"的评级");
+          if (!item.value) throw new Error("请选择服务项" + item.name + "的评级");
         })
       })
     } catch (error) {
@@ -134,30 +133,26 @@ CustomPage({
       return that.showTips(error.message);
     }
     let summary = that.data.summary;
-    if(!summary) return that.showTips("请输入康复小结");
+    if (!summary) return that.showTips("请输入康复小结");
     let imgList = that.data.imgList;
     let trainValue = that.data.trainValue;
-    let res = await Api.serviceRecordUpdate(JSON.stringify({
-      id:that.data.options.id,
-      summaryDetail:{
-        imgList:imgList,
-        summary:summary,
-        serves:Object.values(trainValue)
+    Api.serviceRecordUpdate(JSON.stringify({
+      id: that.data.options.id,
+      summaryDetail: {
+        imgList: imgList,
+        summary: summary,
+        serves: Object.values(trainValue)
       }
-    }));
-    if(res.code==0){
-
-      console.log(that.data.options.type)
-      console.log(!that.data.options.type)
-      if(!that.data.options.type){
+    })).then(res => {
+      if (!that.data.options.type) {
         wx.reLaunch({
           url: '/pages/appointment/list',
         })
-      }else{
+      } else {
         wx.navigateBack();
-      }      
-    }else{
-      that.showTips(res.msg);
-    }
+      }
+    }, err => {
+      that.showTips(err.msg);
+    });
   }
 })

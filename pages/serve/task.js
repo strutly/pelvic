@@ -19,7 +19,7 @@ CustomPage({
     App.watch(function (value) {
       console.log("onReady", value);
       if (value.login && value.auth) {
-        Api.serviceRecordDetail({id:that.data.options.id}).then(res=>{
+        Api.puerperalSetmealRecordDetail({id:that.data.options.id}).then(res=>{
           console.log(res);
           that.setData({
             record:res.data
@@ -33,34 +33,54 @@ CustomPage({
   serveTime(serve) {
     if (interval) clearInterval(interval);
     console.log(serve);
-    if (!serve.startTime) {
+    if (!serve.recordInfo.startTime) {
       that.setData({
         serveTime: "服务未开始"
       })
-    } else if (serve.startTime && serve.endTime) {
+    } else if (serve.recordInfo.startTime && serve.recordInfo.endTime) {
       that.setData({
-        serveTime: serve.serveTime
+        serveTime: serve.recordInfo.serveTime
       })
     } else {
       interval = setInterval(function () {
         that.setData({
-          serveTime: Util.serveTime(serve.startTime)
+          serveTime: Util.serveTime(serve.recordInfo.startTime)
         })
       }, 1000);
     }
   },
-  async serveUpdate(e){
-    let type = e.currentTarget.dataset.type;
-    let param = {
-      id:that.data.options.id,
-    };
-    let time = Util.formatTime(new Date());
-    param[type] = time;
-    let res = await Api.serviceRecordUpdate(param);
-    that.setData({
-      record:res.data
-    })
-    that.serveTime(res.data);
+  serveStart(){
+    Api.serviceRecordStart({
+      setmealRecordId:that.data.options.id
+    }).then(res=>{
+      let data = res.data;
+      let record = that.data.record;
+      record.recordInfo = data;
+      record.useTimes += 1;
+      that.setData({
+        record:record
+      })
+      that.serveTime(record);
+    },err=>{
+      console.log(err)
+      that.showTips(err.msg);
+    });
+  },
+  serveEnd(e){
+    console.log(e);
+    Api.serviceRecordUpdate({
+      id:e.currentTarget.dataset.id,
+      endTime:Util.formatTime(new Date())
+    }).then(res=>{
+      let record = that.data.record;
+      record.recordInfo = res.data;
+      that.setData({
+        record:record
+      })
+      that.serveTime(record);
+    },err=>{
+      that.showTips(err.msg);
+    });
   },
   toList(){
     wx.reLaunch({

@@ -1,4 +1,5 @@
 <wxs src="/utils/tools.wxs" module="Tools"></wxs>
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
 <view class="padding flex flex-direction">
   <view style="order:{{Tools.diffDay(key)}}" wx:for="{{plan}}" wx:for-index="key" wx:key="key" wx:for-item="appointments">
     <view class="text-white margin-tb">{{Tools.planDay(key)}}</view>

@@ -35,18 +35,16 @@ CustomPage({
       patient: patient
     })
   },
-
-  async submit(e) {
+  submit(e) {
     console.log(e);
-    let res = await Api.patientUpdate({
-      patientId:that.data.options.id,
-      files:that.data.patient.file
-    });
-    if (res.code == 0) {
+    Api.patientUpdate({
+      patientId: that.data.options.id,
+      files: that.data.patient.file
+    }).then(res => {
       wx.navigateBack();
-    } else {
-      that.showTips(res.msg);
-    }
+    }, err => {
+      that.showTips(err.msg);
+    });
   }
 
 })

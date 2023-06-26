@@ -1,3 +1,4 @@
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
 <view class="padding">
   <view class="flex align-center bg-white radius-xl padding-sm">
     <input class="flex-sub" placeholder="输入搜索的关键词" confirm-type="search" bindconfirm="submit"></input>
