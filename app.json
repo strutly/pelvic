@@ -21,7 +21,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "健康照护师",
+    "navigationBarTitleText": "清云健康照护师",
     "navigationBarTextStyle": "black"
   },
   "usingComponents": {

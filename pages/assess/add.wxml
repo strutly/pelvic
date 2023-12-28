@@ -44,7 +44,7 @@
         </view>
         <view class=" flex-twice flex align-center">
           <radio class='round main margin-right-xs' checked="{{formData['会阴区痛']['check']=='疼痛'}}" value="疼痛"></radio>
-          疼痛:VAS<input type="number" class="margin-lr-xs solids-bottom" style="padding:0;" data-check="疼痛" bindblur="inputChange" value="{{formData['会阴区痛']['des']}}" data-des=":VAS{val}分" data-parent="功能及体态评估" data-title="会阴区痛"></input>分
+          疼痛:VAS<input type="number" data-min="0" data-max="10" class="margin-lr-xs solids-bottom" style="padding:0;" data-check="疼痛" bindblur="inputChange" value="{{formData['会阴区痛']['des']}}" data-des=":VAS{val}分" data-parent="功能及体态评估" data-title="会阴区痛"></input>分
         </view>
       </view>
     </radio-group>
@@ -59,7 +59,7 @@
         </view>
         <view class=" flex-twice flex align-center">
           <radio class='round main margin-right-xs' value="分离" checked="{{formData['腹直肌分离']['check']=='分离'}}"></radio>
-          分离:<input data-type="radio" class="margin-lr-xs solids-bottom" style="padding:0;" data-check="分离" bindblur="inputChange" value="{{formData['腹直肌分离']['des']}}" data-des=":{val}指" data-parent="功能及体态评估" data-title="腹直肌分离"></input>指
+          分离:<input data-type="radio" data-min="0" data-max="4" class="margin-lr-xs solids-bottom" style="padding:0;" data-check="分离" bindblur="inputChange" value="{{formData['腹直肌分离']['des']}}" data-des=":{val}指" data-parent="功能及体态评估" data-title="腹直肌分离"></input>指
         </view>
       </view>
     </radio-group>
@@ -75,20 +75,20 @@
         </view>
         <view class=" flex-twice flex align-center">
           <radio class='round main margin-right-xs' value="有" checked="{{formData['腰痛']['check']=='有'}}"></radio>
-          有:VAS<input data-type="radio" class="margin-lr-xs solids-bottom" style="padding:0;" data-check="有" bindblur="inputChange" value="{{formData['腰痛']['des']}}" data-des=":VAS{val}分" data-parent="功能及体态评估" data-title="腰痛"></input>分
+          有:VAS<input data-type="radio" data-min="0" data-max="10" class="margin-lr-xs solids-bottom" style="padding:0;" data-check="有" bindblur="inputChange" value="{{formData['腰痛']['des']}}" data-des=":VAS{val}分" data-parent="功能及体态评估" data-title="腰痛"></input>分
         </view>
       </view>
     </radio-group>
     <view class="cu-form-group">
       <view class="title">腰围</view>
-      <input data-type="input" class="text-right" placeholder="请输入腰围" data-check="有" bindblur="inputChange" value="{{formData['腰围']['des']}}" data-des="{val}cm" data-parent="功能及体态评估" data-title="腰围"></input>
+      <input data-type="input" data-min="75" data-max="120" class="text-right" placeholder="请输入腰围" data-check="有" bindblur="inputChange" value="{{formData['腰围']['des']}}" data-des="{val}cm" data-parent="功能及体态评估" data-title="腰围"></input>
       <text>cm</text>
     </view>
 
 
     <view class="cu-form-group">
       <view class="title">睡眠时长</view>
-      <input data-type="input" class="text-right" placeholder="请输入睡眠时长" data-check="有" bindblur="inputChange" value="{{formData['睡眠时长']['des']}}" data-des="{val}小时/天" data-parent="功能及体态评估" data-title="睡眠时长"></input>
+      <input data-type="input" data-min="3" data-max="10" class="text-right" placeholder="请输入睡眠时长" data-check="有" bindblur="inputChange" value="{{formData['睡眠时长']['des']}}" data-des="{val}小时/天" data-parent="功能及体态评估" data-title="睡眠时长"></input>
       <text>小时/天</text>
     </view>
   </view>
@@ -179,11 +179,7 @@
       </checkbox-group>
     </view>
 
-    <view class="cu-form-group">
-      <view class="title">家庭作业</view>
-      <input data-type="input" class="text-right" placeholder="请输入家庭作业" data-check="有" bindblur="inputChange" value="{{formData['家庭作业']['des']}}" data-des="{val}组/天" data-parent="训练计划" data-title="家庭作业"></input>
-      <text>组/天</text>
-    </view>
+
   </view>
 
 
@@ -222,7 +218,7 @@
     <view class="flex padding align-end solid-bottom">
       <view class="margin-right">
         <view>疲劳度</view>
-        <text class="text-sm text-gray">(参考值2-20.0)</text>
+        <text class="text-sm text-gray">(参考值-20~0)</text>
       </view>
       <input type="text" data-type="input" placeholder="请输入" data-check="有" bindblur="inputChange" value="{{formData['疲劳度']['des']}}" data-des="{val}" data-parent="盆底肌评估" data-title="疲劳度" class="text-right flex-sub solid-bottom"></input>
     </view>

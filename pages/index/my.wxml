@@ -17,21 +17,7 @@
   </view>
 </view>
 
-<view class="flex text-center margin-top padding">
-  <view class="flex-sub" bindtap="toUrl" data-url="/pages/patient/list">
-    <image style="width: 120rpx; height: 120rpx;" src="/images/custom.png"></image>
-    <view>客户管理</view>
-  </view>
-  <view class="flex-sub" bindtap="toUrl" data-url="/pages/summary/list">
-    <image style="width: 120rpx; height: 120rpx;" src="/images/summarize.png"></image>
-    <view>康复小结</view>
-  </view>
-  <view class="flex-sub" bindtap="toUrl" data-url="/pages/homework/list">
-    <image style="width: 120rpx; height: 120rpx;" src="/images/homework.png"></image>
-    <view>作业布置</view>
-  </view>
 
-</view>
 
 
 <tabBar selected="1"></tabBar> 

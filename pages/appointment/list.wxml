@@ -4,6 +4,22 @@
     <input class="flex-sub" placeholder="输入搜索的关键词" confirm-type="search" bindconfirm="submit"></input>
     <text class="cuIcon-search"></text>
   </view>
+
+  <view class="flex text-center margin-top padding bg-white radius-xl">
+    <view class="flex-sub" bindtap="toUrl" data-url="/pages/patient/list">
+      <image style="width: 120rpx; height: 120rpx;" src="/images/custom.png"></image>
+      <view>客户管理</view>
+    </view>
+    <view class="flex-sub" bindtap="toUrl" data-url="/pages/summary/list">
+      <image style="width: 120rpx; height: 120rpx;" src="/images/summarize.png"></image>
+      <view>康复小结</view>
+    </view>
+    <view class="flex-sub" bindtap="toUrl" data-url="/pages/homework/list">
+      <image style="width: 120rpx; height: 120rpx;" src="/images/homework.png"></image>
+      <view>作业布置</view>
+    </view>
+  </view>
+
   <view class="text-white margin-top">
     <text class="cuIcon-titles"></text>今日预约
   </view>
@@ -24,7 +40,7 @@
             <text class="margin-left-xs flex-sub">{{item.puerperalPatient.address}}</text>
           </view>
         </view>
-        <view class="bg-main padding-lr round padding-tb-xs margin-left-xs" bindtap="toUrl" data-url="/pages/patient/detail?id={{item.puerperalPatient.id}}" >康复训练</view>
+        <view class="bg-main padding-lr round padding-tb-xs margin-left-xs" bindtap="toUrl" data-url="/pages/patient/detail?id={{item.puerperalPatient.id}}">康复训练</view>
       </view>
     </view>
   </view>

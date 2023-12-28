@@ -13,12 +13,16 @@ CustomPage({
       checks: ['情绪正常', '焦虑', '抑郁'],
     }, {
       parent: "功能及体态评估",
+      title: "阴道膨出",
+      checks: ['是', '否'],
+    }, {
+      parent: "功能及体态评估",
       title: "阴道结节",
-      checks: ['正常', '轻度', '中度', '重度'],
+      checks: ['是', '否'],
     }, {
       parent: "功能及体态评估",
       title: "阴道瘢痕",
-      checks: ['无', '轻度', '中度', '重度'],
+      checks: ['是', '否'],
     }, {
       parent: "功能及体态评估",
       title: "压力性尿失禁",
@@ -27,10 +31,6 @@ CustomPage({
       parent: "功能及体态评估",
       title: "盆底肌肌力",
       checks: ['正常', '下降', '紧张'],
-    }, {
-      parent: "功能及体态评估",
-      title: "盆底肌",
-      checks: ['松弛', '正常', '张力高'],
     }, {
       parent: "功能及体态评估",
       title: "耻骨联合分离",
@@ -179,11 +179,21 @@ CustomPage({
   },
   inputChange(e) {
     console.log(e);
-    let val = e.detail.value;
+
+    let val = e.detail.value; if (!val) return;
     let dataset = e.currentTarget.dataset;
+
     let formData = that.data.formData;
 
-    dataset.desVal = dataset.des.replace('{val}', val);
+    if (val < parseFloat(dataset.min) || parseFloat(dataset.max) < val) {
+      formData[dataset.title] = formData[dataset.title] || {};
+      delete formData[dataset.title];
+      that.setData({
+        formData: formData
+      })
+      return that.showTips("范围错误");
+    }
+
     formData[dataset.title] = formData[dataset.title] || {};
     formData[dataset.title]['des'] = val;
     formData[dataset.title]['title'] = dataset.title;
@@ -222,15 +232,26 @@ CustomPage({
       that.showTips(error.msg)
       return false;
     }
-    Api.puerperalAssessAdd({
-      patientId: that.data.options.id,
-      content: {
-        data: Object.values(formData)
+    wx.showModal({
+      title: '确认提醒',
+      content: '确认将此评估报告提交推送给客户?',
+      complete: (res) => {
+        if (res.confirm) {
+          Api.puerperalAssessAdd({
+            patientId: that.data.options.id,
+            content: {
+              data: Object.values(formData)
+            }
+          }).then(res => {
+            wx.navigateBack();
+          }, err => {
+            that.showTips(err.msg);
+          });
+        }
       }
-    }).then(res => {
-      wx.navigateBack();
-    }, err => {
-      that.showTips(err.msg);
-    });
+    })
+
+
+
   }
 })

@@ -19,16 +19,29 @@
     <text class="cuIcon-titles"></text>已购套餐
   </view>
   <view class="padding-lr">
-    <view class="flex align-center padding-tb solid-bottom" wx:for="{{patient.records}}" wx:key="index">
-      <view class="flex-sub">
-        <view>
-          <text class="text-bold">{{item.setmealName}}</text>
-          <text class="margin-left bg-{{item.status?'grey':'yellow'}} padding-lr-xs radius">{{item.status?'已完成':'服务中'}}</text>
+    <block wx:for="{{patient.records}}" wx:key="index">
+      <view class="flex align-center padding-tb solid-bottom">
+        <view class="flex-sub">
+          <view>
+            <text class="text-bold">{{item.setmealName}}</text>
+            <text class="margin-left bg-{{item.status?'grey':'yellow'}} padding-lr-xs radius">{{item.status?'已完成':'服务中'}}</text>
+          </view>
+          <view class="text-gray margin-top-sm">服务次数:(总次数:{{item.sumTimes}}/已使用:{{item.useTimes}})</view>
         </view>
-        <view class="text-gray margin-top-sm">服务次数:(总次数:{{item.sumTimes}}/已使用:{{item.useTimes}})</view>
+        <view class="bg-main radius-xl padding-xs padding-lr" bindtap="serve" data-id="{{item.id}}">{{item.des}}</view>
       </view>
-      <view class="bg-main radius-xl padding-xs padding-lr" bindtap="serve"  data-id="{{item.id}}">{{item.des}}</view>
-    </view>
+      <view class="text-white bg-main padding-bottom">
+        <view class="padding flex" wx:for="{{item.sumTimes-item.useTimes}}" wx:key="index" wx:for-item="num">
+          <text class="flex-sub">第{{item.sumTimes-num}}次康复训练</text>
+          <text><text class="cuIcon-time margin-right-xs"></text>待执行</text>
+        </view>
+        <view class="padding flex text-yellow" wx:for="{{item.useTimes}}" wx:key="index" wx:for-item="num">
+          <text class="flex-sub">第{{item.useTimes-num}}次康复训练</text>
+          <text><text class="cuIcon-roundcheck margin-right-xs"></text>已服务</text>
+        </view>
+      </view>
+    </block>
+
     <view wx:if="{{patient.records.length==0}}">
       <text class="cuIcon-info"></text> 暂未购买任何套餐
     </view>
